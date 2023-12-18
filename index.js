@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
         let overview = data.overview.split('. ', 1)[0] + ".";
         let source = `https://image.tmdb.org/t/p/original${display}`;
         
-        backgroundContaner.backgroundImage = `linear-gradient(to left, rgba(0,0,0,0) 30%, rgba(0,0,0,0.7)), linear-gradient(to top, rgba(0,0,0,0) 70%, rgba(0,0,0,0.5)),url('${source}')`;
+        backgroundContaner.backgroundImage = `linear-gradient(to left, rgba(0,20,34,0) 30%, rgba(0,20,34,0.7)), linear-gradient(to bottom, rgba(0,20,34,0) 50%, rgba(0,20,34,1)), linear-gradient(to top, rgba(0,20,34,0) 70%, rgba(0,20,34,0.5)),url('${source}')`;
         backgroundContaner.position = "relative";
         backgroundContaner.height = "100vh"; // Set a non-zero height
         backgroundContaner.paddingBottom = "calc(100% / (16/9))";
