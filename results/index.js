@@ -20,19 +20,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 let display = data.results[i].poster_path;
                 let title = data.results[i].title;
 
+                if(!(display == null)){
                 let source = `https://image.tmdb.org/t/p/original/${display}`;
                 console.log(source);
 
-                var mainElement = document.getElementById("film-add");
-                var element = document.createElement("div");
-                var image = document.createElement("img");
-                image.classList = "";
+                let mainElement = document.getElementById("film-add");
+                let element = document.createElement("div");
+                let image = document.createElement("img");
                 image.src = source;
                 element.appendChild(image);
                 mainElement.appendChild(element);
 
-                element.className = "title flex";
+                let tle = document.createElement("p");
+                tle.appendChild(document.createTextNode(title));
+                tle.className = "centered text-white";
+                element.appendChild(tle);
 
+                element.className = "title flex ";
+                }
             }
         })
         .catch(error => {
@@ -47,18 +52,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 let display = data.results[i].poster_path;
                 let title = data.results[i].title;
 
-                let source = `https://image.tmdb.org/t/p/original/${display}`;
-                console.log(source);
+                if(!(display == null)){
 
-                var mainElement = document.getElementById("show-add");
-                var element = document.createElement("div");
-                var image = document.createElement("img");
-                image.classList = "";
-                image.src = source;
-                element.appendChild(image);
-                mainElement.appendChild(element);
+                    let source = `https://image.tmdb.org/t/p/original/${display}`;
+                    console.log(source);
 
-                element.className = "title flex";
+                    var mainElement = document.getElementById("show-add");
+                    var element = document.createElement("div");
+                    var image = document.createElement("img");
+                    image.classList = "";
+                    image.src = source;
+                    element.appendChild(image);
+                    mainElement.appendChild(element);
+
+                    element.className = "title flex";
+                }
 
             }
         })

@@ -155,9 +155,7 @@ title{
   }
 
   .horiz-area{
-    height: 400px;
     display: flex;
-    row-gap: 10px;
     flex-direction: row;
   }
 
@@ -166,6 +164,7 @@ title{
     font-size: 25px;
     margin-left: 30px;
     font-weight: 500;
+
   }
 
   main{
@@ -176,22 +175,38 @@ title{
   .title{
     height: 300px;
     transition: 0.5s;
+    
   }
 
   .title:hover{
-    height: 400px
+    height: 400px;
+    filter: brightness(50%);
   }
 
 
   .scrollmenu {
     display: flex;
+    overflow: hidden; /* Hide scrollbars */
+
     overflow-x: auto;
     overflow-y: hidden; /* Hide vertical overflow */
 
     padding: 10px;
-  }
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+    position: relative;  }
   
   .scrollmenu .title {
     flex: 0 0 auto;
-    margin-right: 10px;
+    margin-right: 16px;
+  }
+
+  .centered{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
   }
