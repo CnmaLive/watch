@@ -154,6 +154,44 @@ title{
 
   }
 
-  
+  .horiz-area{
+    height: 400px;
+    display: flex;
+    row-gap: 10px;
+    flex-direction: row;
+  }
 
+  main h2{
+    color: white;
+    font-size: 25px;
+    margin-left: 30px;
+    font-weight: 500;
+  }
+
+  main{
+    margin-top: 10px;
+
+  }
+
+  .title{
+    height: 300px;
+    transition: 0.5s;
+  }
+
+  .title:hover{
+    height: 400px
+  }
+
+
+  .scrollmenu {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden; /* Hide vertical overflow */
+
+    padding: 10px;
+  }
   
+  .scrollmenu .title {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }

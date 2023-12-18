@@ -1,41 +1,72 @@
 //Set Main Event
-document.addEventListener("DOMContentLoaded", function(){
-    let input = '1433';
+document.addEventListener("DOMContentLoaded", function () {
+    var a = location.href;
+    var b = a.substring(a.indexOf("?") + 1);
+    var input = b.substring(b.indexOf("=") + 1);
+    input = decodeURIComponent(input.replace(/\+/g, " ")); // Use decodeURIComponent to handle URL encoding
+
+    console.log(input);
 
     const apiKey = '89d3d50b04bf827bde106ef72f4856c3';
-    //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
-    const url = `https://api.themoviedb.org/3/tv/${input}?api_key=${apiKey}`;
-    console.log(url);
+    const murl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`;
+    const tvurl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${input}`;
 
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        let backgroundContaner= document.getElementById("background-container").style;
-        let display = data.backdrop_path;
-        let name = data.name;
-        let overview = data.overview.split('. ', 1)[0] + ".";
-        let source = `https://image.tmdb.org/t/p/original${display}`;
-        
-        backgroundContaner.backgroundImage = `linear-gradient(to left, rgba(0,20,34,0) 30%, rgba(0,20,34,0.7)), linear-gradient(to bottom, rgba(0,20,34,0) 50%, rgba(0,20,34,1)), linear-gradient(to top, rgba(0,20,34,0) 70%, rgba(0,20,34,0.5)),url('${source}')`;
-        backgroundContaner.position = "relative";
-        backgroundContaner.height = "100vh"; // Set a non-zero height
-        backgroundContaner.paddingBottom = "calc(100% / (16/9))";
-        backgroundContaner.backgroundSize = "cover";
-        backgroundContaner.backgroundPosition = "center";
 
-        let title = document.createElement('h1');
-        title.appendChild(document.createTextNode(name))
-        document.getElementById("main-title").appendChild(title);
+    fetch(murl)
+        .then(response => response.json())
+        .then(data => {
 
-        let description = document.createElement('p');
-        description.appendChild(document.createTextNode(overview));
-        document.getElementById("main-description").appendChild(description);
+            for (let i = 0; i < data.results.length; i++) {
+                let display = data.results[i].poster_path;
+                let title = data.results[i].title;
+
+                let source = `https://image.tmdb.org/t/p/original/${display}`;
+                console.log(source);
+
+                var mainElement = document.getElementById("film-add");
+                var element = document.createElement("div");
+                var image = document.createElement("img");
+                image.classList = "";
+                image.src = source;
+                element.appendChild(image);
+                mainElement.appendChild(element);
+
+                element.className = "title flex";
+
+            }
+        })
+        .catch(error => {
+            console.log("No Film Found", error);
+        });
+
+        fetch(tvurl)
+        .then(response => response.json())
+        .then(data => {
+
+            for (let i = 0; i < data.results.length; i++) {
+                let display = data.results[i].poster_path;
+                let title = data.results[i].title;
+
+                let source = `https://image.tmdb.org/t/p/original/${display}`;
+                console.log(source);
+
+                var mainElement = document.getElementById("show-add");
+                var element = document.createElement("div");
+                var image = document.createElement("img");
+                image.classList = "";
+                image.src = source;
+                element.appendChild(image);
+                mainElement.appendChild(element);
+
+                element.className = "title flex";
+
+            }
+        })
+        .catch(error => {
+            console.log("No Film Found", error);
+        });
+
         
-        
-    }) 
-    .catch(error => {
-        console.log("No Show Found")
-    });
 });
 
 var isIn = false;
@@ -101,7 +132,6 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
         this.classList.add("hovered");
         isIn =true;
     }
-
   });
   
   document.getElementById("search-id").addEventListener("mouseout", function() {
@@ -144,3 +174,4 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
       document.getElementById("search-id").click();
     }
   });
+  
