@@ -1,6 +1,6 @@
 //Set Main Event
 document.addEventListener("DOMContentLoaded", function(){
-    let input = '60059';
+    let input = '1433';
 
     const apiKey = '89d3d50b04bf827bde106ef72f4856c3';
     //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
