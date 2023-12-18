@@ -135,3 +135,9 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
         this.classList.remove("hovered");
   });
 
+
+  document.getElementById("search-bar").addEventListener("keypress", function(event) {
+    if (event.key === "Enter" && document.getElementById("search-bar").value != "") {
+      document.getElementById("searchButton").click();
+    }
+  });
