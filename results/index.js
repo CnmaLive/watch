@@ -118,12 +118,12 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
   });
   
   document.getElementById("search-id").addEventListener("click", function() {
-        this.classList.add("hovered");
-        if(document.getElementById("search-bar").value != ""){
-            var input = document.getElementById("search-bar").value;
-            input = input.replace(" ", "+")
-            window.location.replace(`../results/index.html?keyword=${input}`);
-        }
+    this.classList.add("hovered");
+    if(document.getElementById("search-bar").value != ""){
+        var input = document.getElementById("search-bar").value;
+        input = input.replace(" ", "+")
+        window.location.replace(`../results/index.html?keyword=${input}`);
+    }
   });
 
   //Notification Icon
@@ -134,4 +134,7 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
   document.getElementById("notification-id").addEventListener("mouseout", function() {
         this.classList.remove("hovered");
   });
+  
+  document.getElementById("search-id").addEventListener("click", function() {
 
+  });
