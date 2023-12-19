@@ -11,6 +11,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const murl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`;
     const tvurl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${input}`;
 
+    // fetch(murl)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         document.getElementById("moviesList").innerHTML = ``;
+    //         document.getElementById("film-add").innerHTML = `<div class="flex gap-0 h-14 w-4/5 rounded-xl light-blue"><h2 class="m-auto">Films</h2></div>`;
+    //         for(let i = 0; i < Object.keys( data.results ).length; i++){
+    //             let display = data.results[i].poster_path;
+    //             let title = data.results[i].title;
+    //             if(display.startsWith("null", 4)){
+    //                 console.log("algoth")
+    //             }
+    //             console.log(display + "Film");
+    //             let source = `https://image.tmdb.org/t/p/original/${display}`;
+    //              document.getElementById("film-add").innerHTML += `
+    //                 <div class="flex justify-center items-center container"> 
+    //                     <img src=${source} id="poster" class="zoom rounder h-4/6">
+    //                     <div id="nested_text" class="text_hover centered">${title}</div> 
+    //                 </div>
+    //             `;
+    //         }       
+    //      })
+    //     .catch(error => {
+    //         console.log("No Film Found")
+    //     });
 
     fetch(murl)
         .then(response => response.json())
@@ -21,23 +45,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 let title = data.results[i].title;
 
                 if(!(display == null)){
-                let source = `https://image.tmdb.org/t/p/original/${display}`;
-                console.log(source);
 
-                let mainElement = document.getElementById("film-add");
-                let element = document.createElement("div");
-                let image = document.createElement("img");
-                image.src = source;
-                element.appendChild(image);
-                mainElement.appendChild(element);
+                    let source = `https://image.tmdb.org/t/p/original/${display}`;
+                    console.log(source);
 
-                let tle = document.createElement("p");
-                tle.appendChild(document.createTextNode(title));
-                tle.className = "centered text-white";
-                element.appendChild(tle);
+                    var mainElement = document.getElementById("film-add");
+                    var element = document.createElement("div");
+                    var image = document.createElement("img");
+                    image.classList = "";
+                    image.src = source;
+                    element.appendChild(image);
+                    mainElement.appendChild(element);
 
-                element.className = "title flex ";
+                    element.className = "title flex";
                 }
+
             }
         })
         .catch(error => {
