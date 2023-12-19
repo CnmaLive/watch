@@ -122,7 +122,7 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
         if(document.getElementById("search-bar").value != ""){
             var input = document.getElementById("search-bar").value;
             input = input.replace(" ", "+")
-            window.location.replace(`results/index.html?keyword=${input}`);
+            window.location = `results/index.html?keyword=${input}`;
         }
   });
 

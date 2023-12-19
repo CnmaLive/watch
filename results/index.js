@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var b = a.substring(a.indexOf("?") + 1);
     var input = b.substring(b.indexOf("=") + 1);
     input = decodeURIComponent(input.replace(/\+/g, " ")); // Use decodeURIComponent to handle URL encoding
+    document.title = input;
 
     console.log(input);
 
@@ -52,9 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     var mainElement = document.getElementById("film-add");
                     var element = document.createElement("div");
                     var id = data.results[i].id;
-                    element.setAttribute("id", id);
+                    element.dataset.myValue = id;
                     element.addEventListener("click", function(event) {
-                        window.location.replace(`../now/index.html?id=${id}`);
+                        var di = this.dataset.myValue;
+                        window.location = `../now/index.html?movie/id=${di}`;
                       });
                     var image = document.createElement("img");
                     image.src = source;
@@ -85,6 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     var mainElement = document.getElementById("show-add");
                     var element = document.createElement("div");
+                    var id = data.results[i].id;
+                    element.dataset.myValue = id;
+                    element.addEventListener("click", function(event) {
+                        var di = this.dataset.myValue;
+                        window.location = `../now/index.html?tv/id=${di}`;
+                      });
                     var image = document.createElement("img");
                     image.classList = "";
                     image.src = source;
@@ -184,9 +192,9 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
   document.getElementById("search-id").addEventListener("click", function() {
     this.classList.add("hovered");
     if(document.getElementById("search-bar").value != ""){
-        var input = document.getElementById("search-bar").value;
-        input = input.replace(" ", "+")
-        window.location.replace(`../results/index.html?keyword=${input}`);
+      var input = document.getElementById("search-bar").value;
+      input = input.replace(" ", "+")
+      window.location = `../results/index.html?keyword=${input}`;
     }
   });
 
@@ -199,10 +207,6 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
         this.classList.remove("hovered");
   });
   
-  document.getElementById("search-id").addEventListener("click", function() {
-
-  });
-
   document.getElementById("search-bar").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       document.getElementById("search-id").click();
@@ -223,9 +227,4 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
 
   document.getElementById("forward-button-show").addEventListener("click", function(event){
     document.getElementById('show-add').scrollLeft += 1500;
-  });
-
-  document.getElementsByClassName("title").addEventListener("click", function(event){
-    let id = document.getElementsByTagName("a")[0].id;
-    console.log(id);
   });
