@@ -51,8 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     var mainElement = document.getElementById("film-add");
                     var element = document.createElement("div");
+                    var id = data.results[i].id;
+                    element.setAttribute("id", id);
+                    element.addEventListener("click", function(event) {
+                        window.location.replace(`../now/index.html?id=${id}`);
+                      });
                     var image = document.createElement("img");
-                    image.classList = "";
                     image.src = source;
                     element.appendChild(image);
                     mainElement.appendChild(element);
@@ -205,3 +209,23 @@ document.getElementById("search-id").addEventListener("mouseover", function() {
     }
   });
   
+  document.getElementById("back-button").addEventListener("click", function(event){
+    document.getElementById('film-add').scrollLeft -= 1500;
+  });
+
+  document.getElementById("forward-button").addEventListener("click", function(event){
+    document.getElementById('film-add').scrollLeft += 1500;
+  });
+
+  document.getElementById("back-button-show").addEventListener("click", function(event){
+    document.getElementById('show-add').scrollLeft -= 1500;
+  });
+
+  document.getElementById("forward-button-show").addEventListener("click", function(event){
+    document.getElementById('show-add').scrollLeft += 1500;
+  });
+
+  document.getElementsByClassName("title").addEventListener("click", function(event){
+    let id = document.getElementsByTagName("a")[0].id;
+    console.log(id);
+  });

@@ -22,6 +22,10 @@ header div{
     margin-left: 20px;
 }
 
+.mirror{
+  transform: scalex(-1) ;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -143,7 +147,11 @@ body{
 
   .horiz-area{
     display: flex;
-    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden; /* Hide vertical overflow */
+    padding: 10px;
+    scroll-behavior: smooth; /* Add smooth scrolling */
+
   }
 
   main h2{
@@ -162,7 +170,8 @@ body{
   .title{
     height: 300px;
     transition: 0.5s;
-    
+    flex: 0 0 auto;
+    margin-right: 10px;
   }
 
   .title:hover{
@@ -191,9 +200,11 @@ body{
   }
 
   .centered{
-    position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
   display: none;
   }
+
+  
