@@ -1,144 +1,147 @@
-//Set Main Event
-document.addEventListener("DOMContentLoaded", function(){
-    let input = '108978';
+var searchBtn = document.getElementById("search-btn");
+var notificationBtn = document.getElementById("notification-btn");
+var searchBar = document.getElementById("search-bar");
+const apiKey = '89d3d50b04bf827bde106ef72f4856c3';
 
-    const apiKey = '89d3d50b04bf827bde106ef72f4856c3';
-    //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
+document.addEventListener("DOMContentLoaded", function(){
+    // Set Search Bar hidden
+    document.getElementById("search-bar").style.visibility = "hidden";
+    
+    // Set Feature Title
+    let input = '1408';
+
+        //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
     const url = `https://api.themoviedb.org/3/tv/${input}?api_key=${apiKey}`;
-    console.log(url);
 
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        let backgroundContaner= document.getElementById("background-container").style;
+        let backgroundContaner = document.getElementById("background-container").style;
         let display = data.backdrop_path;
         let name = data.name;
         let overview = data.overview.split('. ', 1)[0] + ".";
         let source = `https://image.tmdb.org/t/p/original${display}`;
         
         backgroundContaner.backgroundImage = `linear-gradient(to left, rgba(0,20,34,0) 30%, rgba(0,20,34,0.7)), linear-gradient(to bottom, rgba(0,20,34,0) 50%, rgba(0,20,34,1)), linear-gradient(to top, rgba(0,20,34,0) 70%, rgba(0,20,34,0.5)),url('${source}')`;
-        backgroundContaner.position = "relative";
-        backgroundContaner.height = "100vh"; // Set a non-zero height
-        backgroundContaner.paddingBottom = "calc(100% / (16/9))";
-        backgroundContaner.backgroundSize = "cover";
-        backgroundContaner.backgroundPosition = "center";
 
-        let title = document.createElement('h1');
-        title.appendChild(document.createTextNode(name))
-        document.getElementById("main-title").appendChild(title);
+        let title = document.createTextNode(name);
+        document.getElementById("featured-title").appendChild(title);
 
-        let description = document.createElement('p');
-        description.appendChild(document.createTextNode(overview));
-        document.getElementById("main-description").appendChild(description);
-        
-        
-    }) 
+        let description = document.createTextNode(overview);
+        document.getElementById("featured-description").appendChild(description);
+    })
     .catch(error => {
         console.log("No Show Found")
     });
+
+    //Set Trending Films
+    const trendingFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+
+    fetch(trendingFilmsUrl)
+    .then(response => response.json())
+    .then(data => {
+        for(let i = 0; i < data.results.length; i++){
+            let trendingFilmsContainer = document.getElementById("trending-films-container");
+            let display = data.results[i].poster_path;
+            let name = data.name;
+            let source = `https://image.tmdb.org/t/p/original${display}`;
+    
+            let image = document.createElement("img");
+            image.src = source;
+            //image.classList.add("scroll-icon");
+            trendingFilmsContainer.appendChild(image);
+
+        }
+
+    })
+
+    //Set Trending Shows
+    const trendingShowsUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`;
+
+    fetch(trendingShowsUrl)
+    .then(response => response.json())
+    .then(data => {
+        for(let i = 0; i < data.results.length; i++){
+            let trendingFilmsContainer = document.getElementById("trending-shows-container");
+            let display = data.results[i].poster_path;
+            let name = data.name;
+            let source = `https://image.tmdb.org/t/p/original${display}`;
+    
+            let image = document.createElement("img");
+            image.src = source;
+            //image.classList.add("scroll-icon");
+            trendingFilmsContainer.appendChild(image);
+
+        }
+
+    })
 });
 
-var isIn = false;
+//Add Scrolling Button Left
+var leftButtons = document.getElementsByClassName("scroll-left");
 
-document.getElementById("search-id").onclick = function() {
-    var searchBar = document.getElementById("search-bar");
-    var inputValue = document.getElementById("search-bar").value;
-    var iconImage = document.getElementById("looking-glass").style;
-    var searchId = document.getElementById("search-id").style;
-    var expanded = searchBar.style.visibility;
-    
-    if(expanded == "visible" && inputValue == ""){
+for(let i = 0; i < leftButtons.length; i++){
+    leftButtons[i].addEventListener("click", function(){
+        let container = leftButtons[i].parentNode;
+        let slider = container.querySelector(".slider");
+        const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
+        slider.style.setProperty('--slider-index', sliderIndex-1);
+    });
+}
 
-        searchBar.style.transform = "translateX(0%) scaleX(1)";
-        // Trigger reflow
-        searchBar.offsetHeight;
-        
-        // Apply transition styles
-        searchBar.style.transition = "transform 0.3s";
-        
-        // Set final styles
-        searchBar.style.transform = "translateX(41%) scaleX(0)";
-        
-        // Reset transition property after animation completes
-        setTimeout(() => {
-            searchBar.style.transition = "";
-            searchBar.style.visibility = "hidden";
-            console.log(isIn);
-            if(!isIn){
-                console.log(isIn);
-                // Convert the element to a jQuery object
-                var $searchId = $(document.getElementById("search-id"));
+//Add Scrolling Button Right
+var rightButton = document.getElementsByClassName("scroll-right");
 
-                // Use addClass to add a class to the element
-                $searchId.removeClass("hovered");
-            }
-        }, 250);
-                                
+for(let i = 0; i < rightButton.length; i++){
+    rightButton[i].addEventListener("click", function(){
+        let container = rightButton[i].parentNode;
+        let slider = container.querySelector(".slider");
+        const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
+        slider.style.setProperty('--slider-index', sliderIndex+1);
+        console.log(sliderIndex)
+    });
+}
+
+// Search Notification On Hover
+searchBtn.addEventListener('mouseover', function(){
+    let icon = document.getElementById("search-icon").style;
+    icon.filter = "invert(0%)";
+    searchBtn.style.background = "white";
+})
+
+searchBtn.addEventListener('mouseout', function(){
+    let icon = document.getElementById("search-icon").style;
+    if(searchBar.style.visibility === "hidden"){
+        icon.filter = "invert(100%)";
+        searchBtn.style.background = "transparent";
+    }
+})
+
+notificationBtn.addEventListener('mouseover', function(){
+    let icon = document.getElementById("notification-icon").style;
+    icon.filter = "invert(0%)";
+    notificationBtn.style.background = "white";
+})
+
+notificationBtn.addEventListener('mouseout', function(){
+    let icon = document.getElementById("notification-icon").style;
+    icon.filter = "invert(100%)";
+    notificationBtn.style.background = "transparent";
+})
+
+// Search Bar On Click
+searchBtn.onclick = function() {
+    if(searchBar.value != ""){
+
+    }
+    if(searchBar.style.visibility == "hidden"){
+        searchBar.style.visibility = "visible";
+        searchBar.style.width = "350px";
+        searchBar.focus;
         return;
-    } 
-
-    // Set initial styles
-    searchBar.style.transform = "translateX(42%) scaleX(0)";
-    searchBar.style.visibility = "visible";
-    // Trigger reflow
-    searchBar.offsetHeight;
-
-    //Remove border
-    searchBar.style.border = "none";
-    searchBar.style.outline = "none";
-
-    // Apply transition styles
-    searchBar.style.transition = "transform 0.3s";
-
-    // Set final styles
-    searchBar.style.transform = "translateX(0) scaleX(1)";
-
-    searchBar.focus();
-};
-
-document.getElementById("search-id").addEventListener("mouseover", function() {
-    if(document.getElementById("search-bar").style.visibility == "hidden"){
-        this.classList.add("hovered");
-        isIn =true;
     }
-
-  });
-  
-  document.getElementById("search-id").addEventListener("mouseout", function() {
-    if(document.getElementById("search-bar").style.visibility == "visible"){
-        this.classList.add("hovered");
-        isIn =false;
-
-    }
-    else if(document.getElementById("search-bar").style.visibility = "hidden"){
-        this.classList.remove("hovered");
-        isIn =false;
-    }
-
-  });
-  
-  document.getElementById("search-id").addEventListener("click", function() {
-        this.classList.add("hovered");
-        if(document.getElementById("search-bar").value != ""){
-            var input = document.getElementById("search-bar").value;
-            input = input.replace(" ", "+")
-            window.location = `results/index.html?keyword=${input}`;
-        }
-  });
-
-  //Notification Icon
-  document.getElementById("notification-id").addEventListener("mouseover", function() {
-        this.classList.add("hovered");
-  });
-  
-  document.getElementById("notification-id").addEventListener("mouseout", function() {
-        this.classList.remove("hovered");
-  });
+    searchBar.style.visibility = "hidden";
+    searchBar.style.width = "40px";
+}
 
 
-  document.getElementById("search-bar").addEventListener("keypress", function(event) {
-      console.log("enter")
-    if (event.key === "Enter") {
-      document.getElementById("search-id").click();
-    }
-  });
