@@ -3,7 +3,15 @@ document.addEventListener("DOMContentLoaded", function(){
     let a = location.href;
     let b = a.substring(a.indexOf("?") + 1);
     let id = b.substring(b.indexOf("=") + 1);
-    let source = `https://vidsrc.to/embed/tv/${id}?autoplay=1`
+
+    let index = b.charAt(0);
+
+    if(index = t){
+      let source = `https://vidsrc.to/embed/tv/${id}`
+    }
+    else{
+      let source = `https://vidsrc.to/embed/movie/${id}`
+    }
 
     let iframe = document.createElement("iframe");
     iframe.src = source;
