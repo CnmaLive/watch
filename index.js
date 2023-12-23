@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function(){
             let name = data.name;
             let source = `https://image.tmdb.org/t/p/original${display}`;
     
+
+            
             let image = document.createElement("img");
             image.src = source;
             //image.classList.add("scroll-icon");
@@ -131,14 +133,16 @@ notificationBtn.addEventListener('mouseout', function(){
 
 // Search Bar On Click
 searchBtn.onclick = function() {
-    if(searchBar.value != ""){
-
-    }
     if(searchBar.style.visibility == "hidden"){
         searchBar.style.visibility = "visible";
         searchBar.style.width = "350px";
         searchBar.focus;
         return;
+    }
+    if(searchBar.value != ""){
+        var input = searchBar.value;
+        input = input.replace(" ", "+")
+        window.location = `../search/index.html?keyword=${input}`;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";

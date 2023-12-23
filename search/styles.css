@@ -102,3 +102,109 @@ a > img{
     margin-top: 13px;
     margin-right: -44px;
 }
+
+/* Caseroll Section Title */
+body > h2 {
+    color: white;
+    font-weight: 300;
+    margin: 0;
+    margin-top: .3%;
+    margin-left: 2.5%;
+}
+
+/* Films Caseroll */
+.container{
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slider{
+    --slider-index: 0;
+    display: flex;
+    width: 94%;
+    transform: translateX(calc(var(--slider-index) * -100%));
+    flex-grow: 1;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider > img{
+    max-width: calc(100% / 6 - 2 * 0.5rem);
+    aspect-ratio: 2/3;
+    margin: .5rem;
+    border-radius: 0.96rem;
+    transition: .3s;
+}
+
+.slider > img:hover{
+    transform: scale(1.05);
+    filter: brightness(50%);
+}
+
+/* Scroll Buttons */
+.scroll{
+    flex-grow: 0;
+    width: 4%;
+    z-index: 10;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+.scroll:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    
+}
+
+.scroll-left{
+    margin-left: 0;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+}
+
+.left-scroll-icon{
+    width: 70%;
+    transform: scaleX(-1);
+    filter: invert(100%);
+    visibility: hidden;
+    opacity: 0%;
+    transition: .3s;
+}
+
+.container:hover .left-scroll-icon{
+    visibility: visible;
+    opacity: 90%;
+}
+
+.scroll:hover > .left-scroll-icon{
+    width: 90%;
+}
+
+.scroll-right{
+    margin-right: 0;
+    padding: .5rem;
+    border-top-left-radius: 0.9rem;
+    border-bottom-left-radius: 0.9rem;
+}
+
+.right-scroll-icon{
+    width: 70%;  
+    filter: invert(100%);
+    visibility: hidden;
+    opacity: 0%;
+    transition: .3s;
+}
+
+.container:hover .right-scroll-icon{
+    visibility: visible;
+    opacity: 90%;
+
+}
+
+.scroll:hover > .right-scroll-icon{
+    width: 90%;
+}
