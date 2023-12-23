@@ -80,7 +80,7 @@ document.getElementById("search-id").onclick = function() {
     // Set initial styles
     searchBar.style.transform = "translateX(42%) scaleX(0)";
     searchBar.style.visibility = "visible";
-    // Trigger reflow
+    // Triuttger reflow
     searchBar.offsetHeight;
 
     //Remove border
