@@ -2,10 +2,9 @@ var container = document.getElementById("container");
 document.addEventListener("DOMContentLoaded", function(){
     let a = location.href;
     let b = a.substring(a.indexOf("?") + 1);
-    let index = b.charAt(0);
     let id = b.substring(b.indexOf("=") + 1);
 
-    console.log(index + " WHWEHR")
+    console.log(location.href);
     var source = `https://vidsrc.to/embed/tv/${id}`;
 
     let iframe = document.createElement("iframe");
