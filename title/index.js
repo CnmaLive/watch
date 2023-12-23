@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let id = b.substring(b.indexOf("=") + 1);
 
     let index = b.charAt(0);
-    let source = ``;
+    var source = `https://vidsrc.to/embed/tv/159`;
 
     if(index == "t"){
       source = `https://vidsrc.to/embed/tv/${id}`
