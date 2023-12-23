@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let index = b.charAt(0);
 
-    if(index = t){
+    if(index == "t"){
       let source = `https://vidsrc.to/embed/tv/${id}`
     }
     else{
