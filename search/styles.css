@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+}
+
+.bg-aspect{
+    background-color: rgb(0, 20, 34);
+}
+
+.website-font{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+nav{
+    height: 7%;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+nav > * {
+    flex-shrink: 0;
+}
+
+/* Main Logo (top-left) */
+a > img{
+    height: 60px;
+    margin: 8px;
+    margin-left: 0;
+}
+
+/* Nav Buttons */
+.btn-size{
+    height: 20px;
+    width: 60px;
+    margin-top: 24px;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.btn-format{
+    color: white;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-format:hover{
+    text-decoration: underline;
+}
+
+/* Search & Notification Buttons */
+.icon-format{
+    height: 20px;
+    filter: invert(100%);
+    margin-left: 1px;
+    margin-top: 1px;
+
+}
+
+.right-btn{
+    background: transparent;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-top: 13px;
+    margin-right: 45px;
+    cursor: pointer;
+    border: none;
+}
+
+.to-nav-right{
+    display: flex;
+    margin-left: auto;
+}
+
+.hovered{
+    background-color: white;
+}
+
+.icon-hovered{
+    filter: invert(0%);
+}
+
+/* Search Bar Input */
+.search-bar-format{
+    background: white;
+    border: none;
+    border-radius: 2rem;
+    visibility: hidden;
+    transition: 0.33s;
+    padding-left: 10px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-bar-size{
+    width: 40px;
+    height: 45px; 
+    margin-top: 13px;
+    margin-right: -44px;
+}

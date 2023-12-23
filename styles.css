@@ -1,162 +1,315 @@
-.bg_colour{
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+.bg-aspect{
     background-color: rgb(0, 20, 34);
 }
 
-header{
-    height: 70px;
-    z-index: 1;
-    position: relative;
+nav{
+    height: 7%;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 3;
 }
 
-header div{
-    color: white;
-    font-size: 16px;
-    margin: 10px;
-    margin-top: 27px;
-    margin-left: 20px;
-}
-
-.logo{
-    height: 60px;
-    margin: 8px;
+nav > * {
+    flex-shrink: 0;
 }
 
 body{
+    margin: 0;
+}
+
+.website-font{
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
+}
+
+/* Main Logo (top-left) */
+a > img{
+    height: 60px;
+    margin: 8px;
+    margin-left: 0;
+}
+
+/* Nav Buttons */
+.btn-size{
+    height: 20px;
+    width: 60px;
+    margin-top: 24px;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.btn-format{
+    color: white;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-format:hover{
+    text-decoration: underline;
+}
+
+/* Search & Notification Buttons */
+.icon-format{
+    height: 20px;
+    filter: invert(100%);
+    margin-left: 1px;
+    margin-top: 1px;
 
 }
 
-.search{
-    filter: invert(100%);
-    height: 45px;
+.right-btn{
+    background: transparent;
     width: 45px;
-    position: absolute;
-    right: 5%;
-    z-index: 1;
-    margin-top: 10px;
-    border-radius: 50%;    
+    height: 45px;
+    border-radius: 50%;
+    margin-top: 13px;
+    margin-right: 45px;
+    cursor: pointer;
+    border: none;
+}
+
+.to-nav-right{
+    display: flex;
+    margin-left: auto;
 }
 
 .hovered{
+    background-color: white;
+}
+
+.icon-hovered{
     filter: invert(0%);
-    background-color: white;
 }
 
-.search-offset{
-    position: absolute;
-    right: 10%;
-}
-
-#background-container {
-    position: relative;
-    z-index: 0;
-    background-repeat: no-repeat;
-}   
-
-.notification-offset{
-    position: absolute;
-    right: 4%;
-}
-
-.icon{
-    height: 20px;
-    position:absolute;
-    top: 28%;
-    z-index: 66;
-    left: 28%;
-}
-
-
-#search-bar{
-    height: 45px;
-    width: 300px;
-    position: absolute;
-    margin-top: 10px;
-    visibility: hidden;
-    opacity: 100%;
-    background-color: white;
-    border-radius: 2em;
-    padding-left: 10px;
+/* Search Bar Input */
+.search-bar-format{
+    background: white;
     border: none;
-
+    border-radius: 2rem;
+    visibility: hidden;
+    transition: 0.33s;
+    padding-left: 10px;
+    font-size: 1rem;
+    outline: none;
 }
 
-.search-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #cd595a;
-    height: 40px;
-    border-radius: 50px;
-    padding: 10px;
-  }
-  
-#main-title{
-    size: 20px;
+.search-bar-size{
+    width: 40px;
+    height: 45px; 
+    margin-top: 13px;
+    margin-right: -44px;
+}
+
+/* Background Image */
+#background-container{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120lvh;
+    position: relative;
+}
+
+/* Featured Title Name & Description*/
+h1{
     font-size: 40px;
-    z-index: 2;
-    display: flex;
     color: white;
     margin-top: 15%;
     margin-left: 3%;
+    margin-bottom: 0;
     font-weight: 500;
-    letter-spacing: 1px;
-    z-index: 1;
+    letter-spacing: 1.5px;
     max-width: 500px;
-  }
 
-  #main-description{
+}
+
+div > p{
     color: white;
     margin-left: 3%;
+    margin-top: 1%;
     max-width: 400px;
-    min-height: 100px;
-    margin-top: 10px;
-  }
+    min-height: 50px;
+    padding-bottom: 2%;
+}
 
-  .watch-now-button{
-    width: 100px;
-    background-color: white;
+/* Featrued Watch Now Button */
+.play-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
+.details-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 1px;
+    filter: invert(100%);
+}
+
+.watch-now-btn{
+    display: flex;
+    background: white;
     margin-left: 3%;
-    font-weight: 500;
-    height: 50px;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 30px;
+    border-radius: 2rem;
     width: 180px;
-    border-radius: 2em;
-    
-  }
+}
 
-  .over{
-    transition: all 0.3s ease;  }
-  .over:hover{
-    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  }
-
-  .play-icon{
-    width: 15px;
-  }
-
-  .details-button{
-    width: 100px;
-    margin-left: 3%;
+.watch-now-btn > h2{
     font-weight: 500;
-    height: 50px;
-    width: 150px;
-    border-radius: 2em;
+    font-size: 16px;
+    margin: 0;
+    margin-top: -1px;
+}
+
+.details-btn{
+    display: flex;
+    background: transparent;
     color: white;
+    margin-left: 3%;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 30px;
+    border-radius: 2rem;
+    width: 180px;
+    border: none;
+    backdrop-filter: blur(5px);
+
+}
+
+.details-btn > h2{
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+    margin-left: 20px;
+    margin-top: -1px;
+}
+
+#button-conatiner{
+    display: flex;
+}
+
+#button-conatiner > button{
+    transition: 0.5s;
+
+}
+
+#button-conatiner > button:hover{
+    transform: scale(1.1);
+}
+
+/* Caseroll Section Title */
+body > h2 {
+    color: white;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 4%;
+    margin-left: 2.5%;
+}
+
+/* Films Caseroll */
+.container{
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slider{
+    --slider-index: 0;
+    display: flex;
+    width: 94%;
+    transform: translateX(calc(var(--slider-index) * -100%));
+    flex-grow: 1;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider > img{
+    max-width: calc(100% / 6 - 2 * 0.5rem);
+    aspect-ratio: 2/3;
+    margin: .5rem;
+    border-radius: 0.96rem;
+    transition: .3s;
+}
+
+.slider > img:hover{
+    transform: scale(1.05);
+    filter: brightness(50%);
+}
+
+/* Scroll Buttons */
+.scroll{
+    flex-grow: 0;
+    width: 4%;
+    z-index: 10;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+.scroll:hover{
+    background-color: rgba(0, 0, 0, 0.8);
     
 }
 
-  .btn{
-    color: white;
-    margin-left: 25px;
-    margin-top: 24px;
-    height: 20px;
-  }
+.scroll-left{
+    margin-left: 0;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 
-  .btn:hover{
-    text-decoration: underline;
+}
 
-  }
+.left-scroll-icon{
+    width: 70%;
+    transform: scaleX(-1);
+    filter: invert(100%);
+    visibility: hidden;
+    opacity: 0%;
+    transition: .3s;
+}
 
-  
+.container:hover .left-scroll-icon{
+    visibility: visible;
+    opacity: 90%;
+}
+
+.scroll:hover > .left-scroll-icon{
+    width: 90%;
+}
+
+.scroll-right{
+    margin-right: 0;
+    padding: .5rem;
+    border-top-left-radius: 0.9rem;
+    border-bottom-left-radius: 0.9rem;
+}
+
+.right-scroll-icon{
+    width: 70%;  
+    filter: invert(100%);
+    visibility: hidden;
+    opacity: 0%;
+    transition: .3s;
+}
+
+.container:hover .right-scroll-icon{
+    visibility: visible;
+    opacity: 90%;
+
+}
+
+.scroll:hover > .right-scroll-icon{
+    width: 90%;
+}
