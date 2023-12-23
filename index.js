@@ -1,14 +1,14 @@
 var searchBtn = document.getElementById("search-btn");
 var notificationBtn = document.getElementById("notification-btn");
 var searchBar = document.getElementById("search-bar");
-const apiKey = '89d3d50b04bf827bde106ef72f4856c3';
+const apiKey = '89d3d50b04bf827bde106ef72f4856c3';  
 
 document.addEventListener("DOMContentLoaded", function(){
     // Set Search Bar hidden
     document.getElementById("search-bar").style.visibility = "hidden";
     
     // Set Feature Title
-    let input = '1408';
+    let input = '85114';
 
         //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
     const url = `https://api.themoviedb.org/3/tv/${input}?api_key=${apiKey}`;
@@ -45,21 +45,33 @@ document.addEventListener("DOMContentLoaded", function(){
             let display = data.results[i].poster_path;
             let name = data.results[i].title;
             let source = `https://image.tmdb.org/t/p/original${display}`;
+            let id = data.results[i].id;
 
+            //Add Poster
             let image = document.createElement("img");
             image.src = source;
             image.classList.add("poster-image");
             
+            //Adding Title On Hover
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
             console.log(h3)
-
+            
+            //Div Storage
             let imgContainer = document.createElement("div");
             imgContainer.appendChild(image);
             imgContainer.classList.add("poster-div");
             imgContainer.appendChild(h3);
-
+            
+            //Saving ID to Image
+            imgContainer.dataset.myValue = id;
+            imgContainer.addEventListener("click", function(event) {
+                let di = this.dataset.myValue;
+                console.log(di)
+                window.location = `../title/index.html?movie/id=${di}`;
+            });
+    
             trendingFilmsContainer.appendChild(imgContainer);
 
         }
@@ -77,21 +89,33 @@ document.addEventListener("DOMContentLoaded", function(){
             let display = data.results[i].poster_path;
             let name = data.results[i].original_name;
             let source = `https://image.tmdb.org/t/p/original${display}`;
+            let id = data.results[i].id;
 
+            //Add Poster
             let image = document.createElement("img");
             image.src = source;
             image.classList.add("poster-image");
             
+            //Adding Title On Hover
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
             console.log(h3)
-
+            
+            //Div Storage
             let imgContainer = document.createElement("div");
             imgContainer.appendChild(image);
             imgContainer.classList.add("poster-div");
             imgContainer.appendChild(h3);
-
+            
+            //Saving ID to Image
+            imgContainer.dataset.myValue = id;
+            imgContainer.addEventListener("click", function(event) {
+                let di = this.dataset.myValue;
+                console.log(di)
+                window.location = `../title/index.html?movie/id=${di}`;
+            });
+    
             trendingFilmsContainer.appendChild(imgContainer);
 
         }
@@ -151,12 +175,21 @@ notificationBtn.addEventListener('mouseout', function(){
     notificationBtn.style.background = "transparent";
 })
 
+document.getElementById("search-bar").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      document.getElementById("search-btn").click();
+    }
+  });
+
 // Search Bar On Click
 searchBtn.onclick = function() {
     if(searchBar.style.visibility == "hidden"){
         searchBar.style.visibility = "visible";
         searchBar.style.width = "350px";
-        searchBar.focus;
+        searchBar.value = "";
+        setTimeout(() => {
+            searchBar.focus();
+        }, 300);
         return;
     }
     if(searchBar.value != ""){

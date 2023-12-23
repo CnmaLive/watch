@@ -283,11 +283,6 @@ body > h2 {
     transform: scale(1.05);
 }
 
-.slider > img:hover{
-    transform: scale(1.05);
-    filter: brightness(50%);
-}
-
 /* Scroll Buttons */
 .scroll{
     flex-grow: 0;

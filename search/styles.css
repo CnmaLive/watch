@@ -129,17 +129,53 @@ body > h2 {
     transition: transform 0.5s ease-in-out;
 }
 
-.slider > img{
-    max-width: calc(100% / 6 - 2 * 0.5rem);
-    aspect-ratio: 2/3;
+.slider > div{
+    min-width: calc(100% / 6 - 2 * .5rem);
     margin: .5rem;
     border-radius: 0.96rem;
     transition: .3s;
+    position: relative;
 }
 
-.slider > img:hover{
+.slider > div > img{
+    height: 100%; 
+    width: 100%; 
+    display:block;
+    border-radius: 1rem;
+}
+
+.slider > div > img:hover{
+    height: 100%; 
+    width: 100%; 
+    display:block;
+    border-radius: 1rem;
+    filter: brightness(30%);
+}
+
+.slider > div > p {
+    position: absolute;
+    background-color: transparent;
+    color: white;
+    font-weight: 400;
+    font-size: 1.3rem;
+    z-index: 3;
+    bottom: 8px;
+    left: 16px;
+    display: none;
+    opacity: 0%;
+    pointer-events: none;
+}
+
+.slider > div:hover > p {
+    transition: 3s;
+
+    opacity: 100%;
+    display: block;
+}
+
+
+.slider > div:hover{
     transform: scale(1.05);
-    filter: brightness(50%);
 }
 
 /* Scroll Buttons */

@@ -1,0 +1,11 @@
+body{
+    margin: 0;
+    background-color: black;
+    overflow: hidden;
+}
+
+body > iframe{
+    height: 100lvh;
+    width: 100%;
+    border: none;
+}

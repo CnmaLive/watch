@@ -19,14 +19,36 @@ document.addEventListener("DOMContentLoaded", function(){
         for(let i = 0; i < data.results.length; i++){
             let filmTvConatiner = document.getElementById("search-films-container");
             let display = data.results[i].poster_path;
-            let name = data.name;
+            let name = data.results[i].title;
             let source = `https://image.tmdb.org/t/p/original${display}`;
+            let id = data.results[i].id;
 
+            //Add Poster
             let image = document.createElement("img");
             image.src = source;
-            //image.classList.add("scroll-icon");
-            filmTvConatiner.appendChild(image);
-
+            image.classList.add("poster-image");
+            
+            //Adding Title On Hover
+            let h3 = document.createElement("p");
+            let title = document.createTextNode(name);
+            h3.appendChild(title);
+            console.log(h3)
+            
+            //Div Storage
+            let imgContainer = document.createElement("div");
+            imgContainer.appendChild(image);
+            imgContainer.classList.add("poster-div");
+            imgContainer.appendChild(h3);
+            
+            //Saving ID to Image
+            imgContainer.dataset.myValue = id;
+            imgContainer.addEventListener("click", function(event) {
+                let di = this.dataset.myValue;
+                console.log(di)
+                window.location = `../title/index.html?movie/id=${di}`;
+            });
+    
+            filmTvConatiner.appendChild(imgContainer);
         }
 
 })
@@ -38,13 +60,36 @@ fetch(tvSearchResutls)
     for(let i = 0; i < data.results.length; i++){
         let searchTvConatiner = document.getElementById("search-shows-container");
         let display = data.results[i].poster_path;
-        let name = data.name;
+        let name = data.results[i].original_name;
         let source = `https://image.tmdb.org/t/p/original${display}`;
+        let id = data.results[i].id;
 
+        //Add Poster
         let image = document.createElement("img");
         image.src = source;
-        searchTvConatiner.appendChild(image);
+        image.classList.add("poster-image");
+        
+        //Adding Title On Hover
+        let h3 = document.createElement("p");
+        let title = document.createTextNode(name);
+        h3.appendChild(title);
+        console.log(h3)
+        
+        //Div Storage
+        let imgContainer = document.createElement("div");
+        imgContainer.appendChild(image);
+        imgContainer.classList.add("poster-div");
+        imgContainer.appendChild(h3);
+        
+        //Saving ID to Image
+        imgContainer.dataset.myValue = id;
+        imgContainer.addEventListener("click", function(event) {
+            let di = this.dataset.myValue;
+            console.log(di)
+            window.location = `../title/index.html?movie/id=${di}`;
+        });
 
+        searchTvConatiner.appendChild(imgContainer);
     }
 
 })
@@ -84,14 +129,19 @@ notificationBtn.addEventListener('mouseout', function(){
 
 // Search Bar On Click
 searchBtn.onclick = function() {
-    if(searchBar.value != ""){
-
-    }
     if(searchBar.style.visibility == "hidden"){
         searchBar.style.visibility = "visible";
         searchBar.style.width = "350px";
-        searchBar.focus;
+        searchBar.value = "";
+        setTimeout(() => {
+            searchBar.focus();
+        }, 300);
         return;
+    }
+    if(searchBar.value != ""){
+        var input = searchBar.value;
+        input = input.replace(" ", "+")
+        window.location = `../search/index.html?keyword=${input}`;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";
@@ -107,6 +157,12 @@ for(let i = 0; i < leftButtons.length; i++){
         slider.style.setProperty('--slider-index', sliderIndex-1);
     });
 }
+
+document.getElementById("search-bar").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      document.getElementById("search-btn").click();
+    }
+  });
 
 //Add Scrolling Button Right
 var rightButton = document.getElementsByClassName("scroll-right");
