@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if(index === "m"){
       source = `https://vidsrc.to/embed/movie/${id}`;
     }
-    console.log(source)
+    console.log(source + "   ADFASF")
 
     let iframe = document.createElement("iframe");
     iframe.src = source;
