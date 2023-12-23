@@ -9,17 +9,11 @@ document.addEventListener("DOMContentLoaded", function(){
     iframe.src = source;
     iframe.allow = "fullscreen";
     iframe.allow = "autoplay";
-    
-    stopAllYouTubeVideos;
+    iframe.
+    // Access the video element directly and play it
+    setTimeout(() => {
+      iframe.click;
+    }, 1000);
 
     container.appendChild(iframe);
-    iframe.contentWindow.play();
 });
-
-var stopAllYouTubeVideos = () => { 
-    var iframes = document.querySelectorAll('iframe');
-    Array.prototype.forEach.call(iframes, iframe => { 
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
-    func: 'stopVideo' }), '*');
-   });
-  }
