@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
                 console.log(di)
-                window.location = `./watch/title/index.html?movie/id=${di}`;
+                window.location = `../watch/title/index.html?movie/id=${di}`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
                 console.log(di)
-                window.location = `./watch/title/index.html?movie/id=${di}`;
+                window.location = `../watch/title/index.html?movie/id=${di}`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
@@ -195,7 +195,7 @@ searchBtn.onclick = function() {
     if(searchBar.value != ""){
         var input = searchBar.value;
         input = input.replace(" ", "+")
-        window.location = `./watch/search/index.html?keyword=${input}`;
+        window.location = `../watch/search/index.html?keyword=${input}`;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";
