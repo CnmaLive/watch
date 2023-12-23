@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", function(){
     let id = b.substring(b.indexOf("=") + 1);
 
     let index = b.charAt(0);
+    let source;
 
     if(index == "t"){
-      let source = `https://vidsrc.to/embed/tv/${id}`
+      source = `https://vidsrc.to/embed/tv/${id}`
     }
     else{
-      let source = `https://vidsrc.to/embed/movie/${id}`
+      source = `https://vidsrc.to/embed/movie/${id}`
     }
 
     let iframe = document.createElement("iframe");
