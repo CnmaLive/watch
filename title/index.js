@@ -4,8 +4,13 @@ document.addEventListener("DOMContentLoaded", function(){
     let b = a.substring(a.indexOf("?") + 1);
     let id = b.substring(b.indexOf("=") + 1);
 
-    console.log(location.href);
+    let index = b.charAt(0);
     var source = `https://vidsrc.to/embed/tv/${id}`;
+
+    if(index === "m"){
+      source = `https://vidsrc.to/embed/movie/${id}`;
+    }
+    console.log(source)
 
     let iframe = document.createElement("iframe");
     iframe.src = source;
