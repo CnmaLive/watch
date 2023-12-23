@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let index = b.charAt(0);
     var source = `https://vidsrc.to/embed/tv/${id}`;
-    console.log(source)
+    console.log(index)
 
     let iframe = document.createElement("iframe");
     iframe.src = source;
