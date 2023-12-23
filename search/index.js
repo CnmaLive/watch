@@ -86,7 +86,7 @@ fetch(tvSearchResutls)
         imgContainer.addEventListener("click", function(event) {
             let di = this.dataset.myValue;
             console.log(di)
-            window.location = `.../title/index.html?movie/id=${di}`;
+            window.location = `./watch/title/index.html?movie/id=${di}`;
         });
 
         searchTvConatiner.appendChild(imgContainer);
@@ -141,7 +141,7 @@ searchBtn.onclick = function() {
     if(searchBar.value != ""){
         var input = searchBar.value;
         input = input.replace(" ", "+")
-        window.location = `.../search/index.html?keyword=${input}`;
+        window.location = `./watch/search/index.html?keyword=${input}`;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";

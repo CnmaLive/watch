@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function(){
     iframe.src = source;
     iframe.allow = "fullscreen";
     iframe.allow = "autoplay";
-    iframe.
     // Access the video element directly and play it
     setTimeout(() => {
       iframe.click;
