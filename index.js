@@ -43,13 +43,24 @@ document.addEventListener("DOMContentLoaded", function(){
         for(let i = 0; i < data.results.length; i++){
             let trendingFilmsContainer = document.getElementById("trending-films-container");
             let display = data.results[i].poster_path;
-            let name = data.name;
+            let name = data.results[i].title;
             let source = `https://image.tmdb.org/t/p/original${display}`;
-    
+
             let image = document.createElement("img");
             image.src = source;
-            //image.classList.add("scroll-icon");
-            trendingFilmsContainer.appendChild(image);
+            image.classList.add("poster-image");
+            
+            let h3 = document.createElement("p");
+            let title = document.createTextNode(name);
+            h3.appendChild(title);
+            console.log(h3)
+
+            let imgContainer = document.createElement("div");
+            imgContainer.appendChild(image);
+            imgContainer.classList.add("poster-div");
+            imgContainer.appendChild(h3);
+
+            trendingFilmsContainer.appendChild(imgContainer);
 
         }
 
@@ -64,15 +75,24 @@ document.addEventListener("DOMContentLoaded", function(){
         for(let i = 0; i < data.results.length; i++){
             let trendingFilmsContainer = document.getElementById("trending-shows-container");
             let display = data.results[i].poster_path;
-            let name = data.name;
+            let name = data.results[i].original_name;
             let source = `https://image.tmdb.org/t/p/original${display}`;
-    
 
-            
             let image = document.createElement("img");
             image.src = source;
-            //image.classList.add("scroll-icon");
-            trendingFilmsContainer.appendChild(image);
+            image.classList.add("poster-image");
+            
+            let h3 = document.createElement("p");
+            let title = document.createTextNode(name);
+            h3.appendChild(title);
+            console.log(h3)
+
+            let imgContainer = document.createElement("div");
+            imgContainer.appendChild(image);
+            imgContainer.classList.add("poster-div");
+            imgContainer.appendChild(h3);
+
+            trendingFilmsContainer.appendChild(imgContainer);
 
         }
 
