@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let index = b.charAt(0);
     var source = `https://vidsrc.to/embed/tv/${id}`;
 
-    if(index === "m"){
+    if(index == "m"){
       source = `https://vidsrc.to/embed/movie/${id}`;
     }
     console.log(source + "   ADFASF")
