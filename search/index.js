@@ -141,7 +141,7 @@ searchBtn.onclick = function() {
     if(searchBar.value != ""){
         var input = searchBar.value;
         input = input.replace(" ", "+")
-        window.location = `./search/index.html?keyword=${input}`;
+        window.location = `./index.html?keyword=${input}`;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";
