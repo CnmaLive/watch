@@ -235,6 +235,7 @@ body > h2 {
 }
 
 .slider > div{
+    max-width: calc(100% / 6 - 2 * .5rem);
     min-width: calc(100% / 6 - 2 * .5rem);
     margin: .5rem;
     border-radius: 0.96rem;
