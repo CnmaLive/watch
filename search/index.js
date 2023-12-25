@@ -17,11 +17,29 @@ document.addEventListener("DOMContentLoaded", function(){
     .then(response => response.json())
     .then(data => {
         for(let i = 0; i < data.results.length; i++){
+            let id = data.results[i].id;
+
+            //var sis = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+
+            var test1 = document.createElement("iframe");
+            test1.src = sis;
+
+
+            console.log(test1.document.currentTime)
+
+            if(test1){
+                console.log("here")
+            }
+            else{
+                console.log("Over")
+
+
+            }
+
             let filmTvConatiner = document.getElementById("search-films-container");
             let display = data.results[i].poster_path;
             let name = data.results[i].title;
             let source = `https://image.tmdb.org/t/p/original${display}`;
-            let id = data.results[i].id;
 
             //Add Poster
             let image = document.createElement("img");
@@ -63,6 +81,9 @@ fetch(tvSearchResutls)
         let name = data.results[i].original_name;
         let source = `https://image.tmdb.org/t/p/original${display}`;
         let id = data.results[i].id;
+
+        console.log(tvSearchResutls)
+
 
         //Add Poster
         let image = document.createElement("img");

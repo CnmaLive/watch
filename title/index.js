@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function(){
     let id = b.substring(b.indexOf("=") + 1);
 
     let index = b.charAt(0);
-    var source = `https://vidsrc.to/embed/tv/${id}`;
+    var source = `https://vidsrc.me/embed/tv?tmdb=${id}/1/1`;
 
     if(index == "m"){
-      source = `https://vidsrc.to/embed/movie/${id}`;
+      source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
     }
 
     let iframe = document.getElementById("iFrame");
@@ -16,16 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     container.appendChild(iframe);
 
-    if(mobileCheck){
-      var
-          el = document.documentElement
-        , rfs =
-               el.requestFullScreen
-            || el.webkitRequestFullScreen
-            || el.mozRequestFullScreen
-    ;
-    rfs.call(el);
-    }
+
 
 });
 
