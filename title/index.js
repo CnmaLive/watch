@@ -13,18 +13,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let iframe = document.getElementById("iFrame");
     iframe.src = source;
-    iframe.allow = "fullscreen";
-    iframe.allow = "autoplay";
-
-
-    // Access the video element directly and play it
-    setTimeout(() => {
-      iframe.click;
-    }, 1000);
 
     container.appendChild(iframe);
 
-    accessIframeContent();
 });
 
 var val;
