@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", function(){
   var index = a.charAt(a.indexOf("?")+1);
     //source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
 
-    var source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+    var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
+
+
+    if(season != null){
+      var source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+    }
 
     if(index == "m"){
       source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
