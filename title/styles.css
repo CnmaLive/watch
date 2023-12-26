@@ -19,9 +19,19 @@ body > iframe{
 
 #eps-container{
     position: absolute;
-    display: block;  
-    top: 45px;
+    display: none;  
+    top: 60px;
     height: 50%;
+    overflow: auto;
+    background-color: rgba(100, 100, 100, 0.9);
+    padding: 10px;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#eps-container::-webkit-scrollbar {
+    display: none;
 }
 
 p{
