@@ -272,7 +272,7 @@ body > h2 {
 
 
 }
-
+/* 
 @media only screen and (max-width: 720px) {
     .slider > div{
         max-width: calc(100% / 3 - 3 * .5rem);
@@ -309,4 +309,4 @@ body > h2 {
     nav > a {
         display: none;
     }
-}
+} */

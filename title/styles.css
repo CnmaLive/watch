@@ -17,6 +17,10 @@ body > iframe{
     top: 40px;
 }
 
+#eps-container{
+    position: absolute;
+    
+}
 
 p{
     color: white;
