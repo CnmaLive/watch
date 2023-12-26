@@ -19,10 +19,16 @@ body > iframe{
 
 #eps-container{
     position: absolute;
-    
+    display: block;  
 }
 
 p{
     color: white;
+}
+
+div > a{
+    text-decoration: none;
+    color: white;
+    display: block;
 }
 
