@@ -163,6 +163,7 @@ searchBtn.onclick = function() {
         var input = searchBar.value;
         input = input.replace(" ", "+")
         window.location = `./index.html?keyword=${input}`;
+        return;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("search-bar").style.visibility = "hidden";
     
     // Set Feature Title
-    let input = '872585';
+    let input = '108978';
 
         //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
     const url = `https://api.themoviedb.org/3/tv/${input}?api_key=${apiKey}`;
@@ -185,7 +185,7 @@ document.getElementById("search-bar").addEventListener("keypress", function(even
 searchBtn.onclick = function() {
     if(searchBar.style.visibility == "hidden"){
         searchBar.style.visibility = "visible";
-        searchBar.style.width = "350px";
+        searchBar.style.width = parseInt(getComputedStyle(searchBar).getPropertyValue('--sarch-bar-expand'))+ "px";
         searchBar.value = "";
         setTimeout(() => {
             searchBar.focus();
@@ -196,6 +196,7 @@ searchBtn.onclick = function() {
         var input = searchBar.value;
         input = input.replace(" ", "+")
         window.location = `./search/index.html?keyword=${input}`;
+        return;
     }
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";

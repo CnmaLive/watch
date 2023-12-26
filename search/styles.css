@@ -97,6 +97,7 @@ a > img{
 }
 
 .search-bar-size{
+    --sarch-bar-expand: 350;
     width: 40px;
     height: 45px; 
     margin-top: 13px;
@@ -244,4 +245,68 @@ body > h2 {
 
 .scroll:hover > .right-scroll-icon{
     width: 90%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .slider > div{
+        max-width: calc(100% / 5 - 2 * .5rem);
+        min-width: calc(100% / 5 - 2 * .5rem);
+    }
+
+}
+
+@media only screen and (max-width: 920px) {
+    .btn-size{
+        display: none;
+    }
+    #notification-btn{
+        display: none;
+    }
+    .right-btn{
+        margin-right: 20px;
+    }
+    .slider > div{
+        max-width: calc(100% / 4 - 2 * .5rem);
+        min-width: calc(100% / 4 - 2 * .5rem);
+    }
+
+
+}
+
+@media only screen and (max-width: 720px) {
+    .slider > div{
+        max-width: calc(100% / 3 - 3 * .5rem);
+        min-width: calc(100% / 3 - 3 * .5rem);
+    }
+
+    div > p{
+        display: none;
+    }
+
+    h1{
+        margin-bottom: 8%;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .slider > div{
+        max-width: calc(100% / 2 - 3 * .5rem);
+        min-width: calc(100% / 2 - 3 * .5rem);
+    }
+    .search-bar-size{
+        --sarch-bar-expand: 300;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .slider > div{
+        max-width: calc(100% / 2 - 3 * .5rem);
+        min-width: calc(100% / 2 - 3 * .5rem);
+    }
+    .search-bar-size{
+        --sarch-bar-expand: 250;
+    }
+    nav > a {
+        display: none;
+    }
 }
