@@ -18,24 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
     .then(data => {
         for(let i = 0; i < data.results.length; i++){
             let id = data.results[i].id;
-
-            //var sis = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-
-            var test1 = document.createElement("iframe");
-            test1.src = sis;
-
-
-            console.log(test1.document.currentTime)
-
-            if(test1){
-                console.log("here")
-            }
-            else{
-                console.log("Over")
-
-
-            }
-
             let filmTvConatiner = document.getElementById("search-films-container");
             let display = data.results[i].poster_path;
             let name = data.results[i].title;
