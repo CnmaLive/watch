@@ -20,6 +20,8 @@ body > iframe{
 #eps-container{
     position: absolute;
     display: block;  
+    top: 45px;
+    height: 50%;
 }
 
 p{
