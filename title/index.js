@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
 
     var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
-
+  console.log(id)
 
     if(season != null){
       var source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;

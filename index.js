@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
                 console.log(di)
-                window.location = `./title/index.html?movie/id/${di}`;
+                window.location = `./title/index.html?movie/id/${di}/1/1`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
                 console.log(di)
-                window.location = `./title/index.html?tv/id/${di}`;
+                window.location = `./title/index.html?tv/id/${di}/1/1`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
