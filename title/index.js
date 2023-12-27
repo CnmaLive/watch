@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function(){
   var index = a.charAt(a.indexOf("?")+1);
     //source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
 
-    var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
-  console.log(id)
+    //var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
 
+    var source = `https://vidsrc.to/embed/movie/${id}/1/1`;
     if(season != null){
-      var source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+      var source = `https://vidsrc.to/embed/movie/${id}/${season}/${episode}`;
     }
 
     if(index == "m"){
