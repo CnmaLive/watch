@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
 
-    var source = `https://vidsrc.to/embed/movie/${id}/1/1`;
+    var source = `https://vidsrc.to/embed/tv/${id}`;
     if(season != null){
-      var source = `https://vidsrc.to/embed/movie/${id}/${season}/${episode}`;
+      var source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`;
     }
 
     if(index == "m"){
