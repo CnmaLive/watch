@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function(){
     if(season != null){
       var source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`;
     }
+    console.log(source)
+
 
     if(index == "m"){
       source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
