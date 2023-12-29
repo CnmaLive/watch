@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
                 console.log(di)
-                window.location = `../title/index.html?movie/id/${di}/1/1`;
+                window.location = `../title/index.html?movie/id/${di}`;
             });
     
             filmTvConatiner.appendChild(imgContainer);

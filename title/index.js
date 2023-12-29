@@ -1,6 +1,9 @@
 var container = document.getElementById("container");
 
 var a = location.href;
+var urlSplit = a.split("/");
+var season = urlSplit[urlSplit.length-2];
+var episode = urlSplit[urlSplit.length-1];
 var id;
 
 var allEps = [];
@@ -10,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function(){
   var index = a.charAt(a.indexOf("?")+1);
 
   //Get ID
-  let urlSplit = a.split("/");
   let indexOfId = urlSplit.indexOf("id");
 
   //Set ID
@@ -18,29 +20,27 @@ document.addEventListener("DOMContentLoaded", function(){
   id = idIndex;
 
   if(index == "m"){
-    var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-    //var source = `https://vidsrc.to/embed/movie/${id}`
+    //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+    var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);
   } else {
   //Get Season and Episode
-  var season = urlSplit[urlSplit.length-2];
-  var episode = urlSplit[urlSplit.length-1];
 
   if(urlSplit.length == 7){
     season = 1;
     episode = 1;
   }
 
-  source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
-  //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+  //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+  source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   setTitle(false);
   fillEps();
   }
 
   let iframe = document.getElementById("iFrame");
-  iframe.src = source;
+  //iframe.src = source;
 
   container.appendChild(iframe);
 });
@@ -104,7 +104,7 @@ document.getElementById("next").addEventListener("click", function(){
   let nextSea = allEps[index+1][0];
   let nextEp = allEps[index+1][1];
   console.log(nextSea + " " + nextEp)
-  window.location.href = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
+  window.location = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
 });
 
 document.getElementById("container").addEventListener('mousedown', function() {
