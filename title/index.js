@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function(){
     //var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
     var source = `https://vidsrc.to/embed/tv/${id}/1/1`
 
+    document.title = "Hire"
+
     //var source = `https://www.youtube.com/embed/tgbNymZ7vqY`;
 
     if(season != null){
@@ -100,7 +102,7 @@ document.getElementById("next").addEventListener("click", function(){
   let nextSea = allEps[index+1][0];
   let nextEp = allEps[index+1][1];
   console.log(nextSea + " " + nextEp)
-  window.location = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
+  window.location.href = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
 });
 
 document.getElementById("container").addEventListener('mousedown', function() {
