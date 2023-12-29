@@ -115,7 +115,7 @@ function fillEps(){
   .then(data => {
     var len = data.seasons.length;
     
-    for(let i = 0; i <= len; i++){
+    for(let i = 0; i < len; i++){
       var eps = data.seasons[i].episode_count;
       for(let j = 0; j < eps; j++){
         //if(j != 0 || i != 0){
