@@ -1,46 +1,48 @@
 var container = document.getElementById("container");
 
 var a = location.href;
-var urlSplit = a.split("/");
-var id = urlSplit[urlSplit.length-3];
-var season = urlSplit[urlSplit.length-2];
-var episode = urlSplit[urlSplit.length-1];
+var id;
 
 var allEps = [];
 
 document.addEventListener("DOMContentLoaded", function(){
-
+  //TV or Movie
   var index = a.charAt(a.indexOf("?")+1);
 
-    //var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
-    var source = `https://vidsrc.to/embed/tv/${id}/1/1`
+  //Get ID
+  let urlSplit = a.split("/");
+  let indexOfId = urlSplit.indexOf("id");
 
-    document.title = "Hire"
+  //Set ID
+  let idIndex = urlSplit[indexOfId+1];
+  id = idIndex;
 
-    //var source = `https://www.youtube.com/embed/tgbNymZ7vqY`;
+  if(index == "m"){
+    //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+    var source = `https://vidsrc.to/embed/movie/${id}`
 
-    if(season != null){
-      //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
-      source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+    setTitle(true);
+  } else {
+  //Get Season and Episode
+  var season = urlSplit[urlSplit.length-2];
+  var episode = urlSplit[urlSplit.length-1];
 
-    }
-    //console.log(source)
-      setTitle(false);
+  if(urlSplit.length == 7){
+    season = 1;
+    episode = 1;
+  }
 
-    if(index == "m"){
-      //source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-      source = `https://vidsrc.to/embed/movie/${id}`
-      document.getElementById("eps").style.display = "none";
-      setTitle(true);
-    }
+  //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+  source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
-    let iframe = document.getElementById("iFrame");
-    iframe.src = source;
+  setTitle(false);
+  fillEps();
+  }
 
-    container.appendChild(iframe);
+  let iframe = document.getElementById("iFrame");
+  iframe.src = source;
 
-    //Fill Episode Array with fallues
-    fillEps();
+  container.appendChild(iframe);
 });
 
 window.mobileCheck = function() {
@@ -144,10 +146,10 @@ function numberToString(num){
 }
 
 function setTitle(film){
-  const url = `https://api.themoviedb.org/3/tv/${id}?api_key==89d3d50b04bf827bde106ef72f4856c3`;
+  var url = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3`;
 
   if(film == true){
-    url = `https://api.themoviedb.org/3/movie/${id}?api_key==89d3d50b04bf827bde106ef72f4856c3`;
+    url = `https://api.themoviedb.org/3/movie/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3`;
   }
 
     fetch(url)
