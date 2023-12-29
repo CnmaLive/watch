@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function saveToLocalStorage(id, s, e){
-  var storedData = JSON.parse(localStorage.getItem('seriesData'));
+  var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   storedData[id] = {s, e};
 
   localStorage.setItem('seiresData', JSON.stringify(storedData));
