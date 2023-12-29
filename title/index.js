@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //var source = `https://vidsrc.me/embed/tv?tmdb=${id}`;
     var source = `https://vidsrc.to/embed/tv/${id}/1/1`
 
-    var source = `https://www.youtube.com/embed/tgbNymZ7vqY`;
+    //var source = `https://www.youtube.com/embed/tgbNymZ7vqY`;
 
     if(season != null){
       //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
@@ -138,4 +138,30 @@ function numberToString(num){
   }
   str = "" + num;
   return str;
+}
+
+function setTitle(film){
+  const url = `https://api.themoviedb.org/3/tv/${id}?api_key==89d3d50b04bf827bde106ef72f4856c3`;
+
+  if(film == true){
+    url = `https://api.themoviedb.org/3/movie/${id}?api_key==89d3d50b04bf827bde106ef72f4856c3`;
+  }
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if(film == true){
+        let name = data.original_title;
+        document.title = name;
+        return;
+      }
+
+        let name = data.name;
+        document.title = name;
+
+
+    })
+    .catch(error => {
+        console.log("No Show Found")
+    });
 }
