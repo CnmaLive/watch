@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(){
   id = idIndex;
 
   if(index == "m"){
-     //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-    //var source = `https://vidsrc.to/embed/movie/${id}`
+    //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+    var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);
   } else {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
-  //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+  source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   //Set Tab Title
   setTitle(false);
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   //Add iFrame to Body
   let iframe = document.getElementById("iFrame");
-  //iframe.src = source;
+  iframe.src = source;
 
   container.appendChild(iframe);
 
