@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
   //Get Season and Episode
 
   //Check if Episode is Defineds
-  if(urlSplit.length == 7){
+  if(urlSplit.length < 8){
     let saved = getFromLocalStorage(id);
     console.log(saved);
     season = saved[0];
@@ -134,15 +134,28 @@ function fillEps(){
   .then(data => {
     var len = data.seasons.length;
     
+    if(data.seasons[0].name == "specials"){
+      for(let i = 1; i < len; i++){
+        var eps = data.seasons[i].episode_count;
+        for(let j = 0; j < eps; j++){
+            let zSeason = i;
+            let zEpisode = j + 1;
+  
+            allEps.push([parseInt(zSeason), parseInt(zEpisode)]);
+        }
+  
+      }
+      return;
+    }
+
+
     for(let i = 0; i < len; i++){
       var eps = data.seasons[i].episode_count;
       for(let j = 0; j < eps; j++){
-        //if(j != 0 || i != 0){
           let zSeason = i + 1;
           let zEpisode = j + 1;
 
           allEps.push([parseInt(zSeason), parseInt(zEpisode)]);
-        //}
       }
 
     }
