@@ -6,10 +6,7 @@ var season = urlSplit[urlSplit.length-2];
 var episode = urlSplit[urlSplit.length-1];
 var id;
 
-let text = '{ "employees" : [' +
-'{ "id":"John" , "lastName":"Doe" },' +
-'{ "firstName":"Anna" , "lastName":"Smith" },' +
-'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+var allEps = [];
 
 document.addEventListener("DOMContentLoaded", function(){
   //TV or Movie
