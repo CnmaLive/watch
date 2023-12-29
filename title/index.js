@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
   id = idIndex;
 
   if(index == "m"){
-    var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+     //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
     //var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);
@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", function(){
       season = saved[0];
       episode = saved[1];
     }
-
     window.location = `../title/index.html?tv/id/${id}/${season}/${episode}`;
+
   }
 
-  source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+  //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
   //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   //Set Tab Title
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   //Add iFrame to Body
   let iframe = document.getElementById("iFrame");
-  iframe.src = source;
+  //iframe.src = source;
 
   container.appendChild(iframe);
 
