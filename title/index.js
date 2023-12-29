@@ -113,13 +113,14 @@ function fillEps(){
   fetch(url)
   .then(response => response.json())
   .then(data => {
-    var len = data.seasons.length - 1;
+    var len = data.seasons.length;
     
-    for(let i = 1; i < len; i++){
+    for(let i = 0; i <= len; i++){
       var eps = data.seasons[i].episode_count;
-      for(let j = 1; j < eps; j++){
+      for(let j = 0; j < eps; j++){
         //if(j != 0 || i != 0){
-          allEps.push([parseInt(i), parseInt(j)]);
+
+          allEps.push([parseInt(i++), parseInt(j++)]);
         //}
       }
 
