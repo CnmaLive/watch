@@ -30,9 +30,15 @@ document.addEventListener("DOMContentLoaded", function(){
   //Check if Episode is Defineds
   if(urlSplit.length < 8){
     let saved = getFromLocalStorage(id);
-    console.log(saved);
-    season = saved[0];
-    episode = saved[1];
+    if(saved == null){
+      console.log("asdf")
+      season = 1;
+      episode = 1;
+    }
+    else{
+      season = saved[0];
+      episode = saved[1];
+    }
   }
 
   //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
@@ -65,7 +71,7 @@ function saveToLocalStorage(id, s, e){
 }
 
 function getFromLocalStorage(id){
-  var storedData = JSON.parse(localStorage.getItem('seriesData'));
+  var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   
   return storedData[id];
 }
