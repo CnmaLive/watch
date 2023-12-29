@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   let iframe = document.getElementById("iFrame");
-  //iframe.src = source;
+  iframe.src = source;
 
   container.appendChild(iframe);
 });
@@ -105,11 +105,6 @@ document.getElementById("next").addEventListener("click", function(){
   let nextEp = allEps[index+1][1];
   console.log(nextSea + " " + nextEp)
   window.location = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
-});
-
-document.getElementById("container").addEventListener('mousedown', function() {
-  isButtonDown = true;
-  console.log('Button pressed!');
 });
 
 function fillEps(){
