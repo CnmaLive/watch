@@ -30,15 +30,18 @@ document.addEventListener("DOMContentLoaded", function(){
   //Check if Episode is Defineds
   if(urlSplit.length < 8){
     let saved = getFromLocalStorage(id);
+    console.log("asdf")
     if(saved == null){
-      console.log("asdf")
       season = 1;
       episode = 1;
     }
     else{
       season = saved[0];
       episode = saved[1];
+
+      console.log(saved)
     }
+
     window.location = `../title/index.html?tv/id/${id}/${season}/${episode}`;
 
   }
