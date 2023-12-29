@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
   id = idIndex;
 
   if(index == "m"){
-    var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+     var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
     //var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);

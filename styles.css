@@ -102,7 +102,7 @@ a > img{
 
 .search-bar-size{
     --sarch-bar-expand: 350;
-    width: 40px;
+    width: 5%;
     height: 45px; 
     margin-top: 13px;
     margin-right: -44px;
@@ -380,10 +380,10 @@ body > h2 {
 
 }
 
-/* @media only screen and (max-width: 720px) {
+ @media only screen and (max-width: 720px) {
     .slider > div{
-        max-width: calc(100% / 3 - 3 * .5rem);
-        min-width: calc(100% / 3 - 3 * .5rem);
+        max-width: calc(100% / 3 - 2 * .5rem);
+        min-width: calc(100% / 3 - 2 * .5rem);
     }
 
     div > p{
@@ -397,18 +397,18 @@ body > h2 {
 
 @media only screen and (max-width: 620px) {
     .slider > div{
-        max-width: calc(100% / 2 - 3 * .5rem);
-        min-width: calc(100% / 2 - 3 * .5rem);
+        max-width: calc(100% / 2 - 2 * .5rem);
+        min-width: calc(100% / 2 - 2 * .5rem);
     }
     .search-bar-size{
-        --sarch-bar-expand: 300;
+        --sarch-bar-expand: 290;
     }
 }
 
 @media only screen and (max-width: 400px) {
     .slider > div{
-        max-width: calc(100% / 2 - 3 * .5rem);
-        min-width: calc(100% / 2 - 3 * .5rem);
+        max-width: calc(100% / 2 - 2 * .5rem);
+        min-width: calc(100% / 2 - 2 * .5rem);
     }
     .search-bar-size{
         --sarch-bar-expand: 250;
@@ -416,4 +416,4 @@ body > h2 {
     nav > a {
         display: none;
     }
-} */
+}
