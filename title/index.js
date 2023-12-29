@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
   //Check if Episode is Defineds
   if(urlSplit.length == 7){
     let saved = getFromLocalStorage(id);
+    console.log(saved);
     season = saved[0];
     episode = saved[1];
   }
