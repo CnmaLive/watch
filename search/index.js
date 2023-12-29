@@ -89,7 +89,7 @@ fetch(tvSearchResutls)
         imgContainer.addEventListener("click", function(event) {
             let di = this.dataset.myValue;
             console.log(di)
-            window.location = `../title/index.html?tv/id/${di}/1/1`;
+            window.location = `../title/index.html?tv/id/${di}`;
         });
 
         searchTvConatiner.appendChild(imgContainer);
