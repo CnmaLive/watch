@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(){
   id = idIndex;
 
   if(index == "m"){
-    //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-    var source = `https://vidsrc.to/embed/movie/${id}`
+    var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
+    //var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);
   } else {
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function(){
     episode = 1;
   }
 
-  //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
-  source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+  source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+  //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   setTitle(false);
   fillEps();
