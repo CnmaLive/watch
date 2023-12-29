@@ -23,12 +23,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
     //console.log(source)
-
+      setTitle(false);
 
     if(index == "m"){
       //source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
       source = `https://vidsrc.to/embed/movie/${id}`
       document.getElementById("eps").style.display = "none";
+      setTitle(true);
     }
 
     let iframe = document.getElementById("iFrame");
