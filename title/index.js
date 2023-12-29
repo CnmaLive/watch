@@ -26,10 +26,13 @@ document.addEventListener("DOMContentLoaded", function(){
     setTitle(true);
   } else {
   //Get Season and Episode
+
     console.log(getFromLocalStorage(id));
 
   //Check if Episode is Defineds
-  if(urlSplit.length < 9){
+  console.log(indexOfId+2)
+  console.log(urlSplit.length)
+  if(indexOfId+2 == urlSplit.length){
     let saved = getFromLocalStorage(id);
       console.log(saved)
       console.log("asdf") 
@@ -38,9 +41,8 @@ document.addEventListener("DOMContentLoaded", function(){
       episode = 1;
     }
     else{
-      season = saved[0];
-      episode = saved[1];
-
+      season = saved["s"];
+      episode = saved["e"];
     }
 
     window.location = `../title/index.html?tv/id/${id}/${season}/${episode}`;
@@ -73,7 +75,7 @@ function saveToLocalStorage(id, s, e){
   var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   storedData[id] = {s, e};
 
-  localStorage.setItem('seiresData', JSON.stringify(storedData));
+  localStorage.setItem('seriesData', JSON.stringify(storedData));
 }
 
 function getFromLocalStorage(id){
