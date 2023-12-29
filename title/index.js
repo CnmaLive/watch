@@ -118,9 +118,9 @@ function fillEps(){
     for(let i = 1; i < len; i++){
       var eps = data.seasons[i].episode_count;
       for(let j = 1; j < eps; j++){
-        if(j != 0 || i != 0){
+        //if(j != 0 || i != 0){
           allEps.push([parseInt(i), parseInt(j)]);
-        }
+        //}
       }
 
     }
