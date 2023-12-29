@@ -10,21 +10,29 @@ body > iframe{
     border: none;
 }
 
-#eps{
+.button-container{
     z-index: 10;
-    background-color: white;
+    background-color: transparent;
     position: absolute;
-    top: 40px;
+    top: 5%;
+    width: 20%;
+    height: 5%;
+}
+
+.button-container > button{
+    width: 40%;
+    height: 100%;
 }
 
 #eps-container{
     position: absolute;
     display: none;  
-    top: 60px;
+    top: 10%;
     height: 50%;
-    overflow: auto;
+    overflow-y: scroll;
     background-color: rgba(100, 100, 100, 0.9);
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -42,5 +50,6 @@ div > a{
     text-decoration: none;
     color: white;
     display: block;
+    height: 20px;
 }
 
