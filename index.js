@@ -213,7 +213,7 @@ function addContinueWatching(){
     for (let key in storedData) {
         const url = `https://api.themoviedb.org/3/tv/${key}?api_key=${apiKey}`;
 
-        if(key != undefined){
+        if(/^\d+$/.test(key)){
             fetch(url)
             .then(response => response.json())
             .then(data => {
