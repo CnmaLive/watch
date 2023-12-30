@@ -15,8 +15,9 @@ body > iframe{
     background-color: transparent;
     position: absolute;
     top: 5%;
-    width: 20%;
+    width: 100%;
     height: 5%;
+    margin-right: auto;
 }
 
 .button-container > button{
