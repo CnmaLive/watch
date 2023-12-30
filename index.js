@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(){
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
-            console.log(h3)
             
             //Div Storage
             let imgContainer = document.createElement("div");
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                console.log(di)
                 window.location = `./title/index.html?movie/id/${di}/1/1`;
             });
     
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function(){
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
-            console.log(h3)
             
             //Div Storage
             let imgContainer = document.createElement("div");
@@ -116,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                console.log(di)
                 window.location = `./title/index.html?tv/id/${di}/1/1`;
             });
     
@@ -148,7 +144,6 @@ for(let i = 0; i < rightButton.length; i++){
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
         slider.style.setProperty('--slider-index', sliderIndex+1);
-        console.log(sliderIndex)
     });
 }
 
@@ -209,6 +204,8 @@ searchBtn.onclick = function() {
 function addContinueWatching(){
     var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   
+    console.log(storedData)
+
     if(storedData == null){
         document.getElementById("continue-watching").style.display = "none";
         document.getElementById("continue-container").style.display = "none";
@@ -239,7 +236,6 @@ function addContinueWatching(){
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
-            console.log(h3)
             
             //Div Storage
             let imgContainer = document.createElement("div");
@@ -251,7 +247,6 @@ function addContinueWatching(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                console.log(di)
                 window.location = `./title/index.html?tv/id/${di}/1/1`;
             });
         })
