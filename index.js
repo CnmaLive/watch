@@ -203,8 +203,6 @@ searchBtn.onclick = function() {
 
 function addContinueWatching(){
     var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
-  
-    console.log(storedData)
 
     if(Object.keys(storedData).length === 0){
         document.getElementById("continue-watching").style.display = "none";
@@ -212,16 +210,7 @@ function addContinueWatching(){
         return;
     }
 
-    let kafe = 1;
     for (let key in storedData) {
-
-        if(kafe ==2){
-            return;
-        }
-        kafe+=1;
-
-        console.log(key + "TEST")
-
         const url = `https://api.themoviedb.org/3/tv/${key}?api_key=${apiKey}`;
 
         fetch(url)
@@ -255,11 +244,11 @@ function addContinueWatching(){
                 let di = this.dataset.myValue;
                 window.location = `./title/index.html?tv/id/${di}/1/1`;
             });
-    
+
             trendingFilmsContainer.appendChild(imgContainer);
         })
         .catch(error => {
             console.log("No Show Found")
         });
-}
+    }
 }
