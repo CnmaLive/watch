@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log("No Show Found")
     });
 
+    // Set Continue Watcing
+    addContinueWatching();
+
+
     //Set Trending Films
     const trendingFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
 
