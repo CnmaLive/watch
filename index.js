@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                window.location = `./title/index.html?movie/id/${di}/1/1`;
+                window.location = `./title/index.html?movie/id/${di}`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                window.location = `./title/index.html?tv/id/${di}/1/1`;
+                window.location = `./title/index.html?tv/id/${di}`;
             });
     
             trendingFilmsContainer.appendChild(imgContainer);
@@ -243,7 +243,7 @@ function addContinueWatching(){
                 imgContainer.dataset.myValue = id;
                 imgContainer.addEventListener("click", function(event) {
                     let di = this.dataset.myValue;
-                    window.location = `./title/index.html?tv/id/${di}/1/1`;
+                    window.location = `./title/index.html?tv/id/${di}`;
                 });
 
                 trendingFilmsContainer.appendChild(imgContainer);
