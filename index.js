@@ -213,42 +213,44 @@ function addContinueWatching(){
     for (let key in storedData) {
         const url = `https://api.themoviedb.org/3/tv/${key}?api_key=${apiKey}`;
 
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            let trendingFilmsContainer = document.getElementById("continue-container-inside");
-            let display = data.poster_path;
-            let name = data.original_name;
-            let source = `https://image.tmdb.org/t/p/original${display}`;
-            let id = data.id;
+        if(key != undefined){
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let trendingFilmsContainer = document.getElementById("continue-container-inside");
+                let display = data.poster_path;
+                let name = data.original_name;
+                let source = `https://image.tmdb.org/t/p/original${display}`;
+                let id = data.id;
 
-            //Add Poster
-            let image = document.createElement("img");
-            image.src = source;
-            image.classList.add("poster-image");
-            
-            //Adding Title On Hover
-            let h3 = document.createElement("p");
-            let title = document.createTextNode(name);
-            h3.appendChild(title);
-            
-            //Div Storage
-            let imgContainer = document.createElement("div");
-            imgContainer.appendChild(image);
-            imgContainer.classList.add("poster-div");
-            imgContainer.appendChild(h3);
-            
-            //Saving ID to Image
-            imgContainer.dataset.myValue = id;
-            imgContainer.addEventListener("click", function(event) {
-                let di = this.dataset.myValue;
-                window.location = `./title/index.html?tv/id/${di}/1/1`;
+                //Add Poster
+                let image = document.createElement("img");
+                image.src = source;
+                image.classList.add("poster-image");
+                
+                //Adding Title On Hover
+                let h3 = document.createElement("p");
+                let title = document.createTextNode(name);
+                h3.appendChild(title);
+                
+                //Div Storage
+                let imgContainer = document.createElement("div");
+                imgContainer.appendChild(image);
+                imgContainer.classList.add("poster-div");
+                imgContainer.appendChild(h3);
+                
+                //Saving ID to Image
+                imgContainer.dataset.myValue = id;
+                imgContainer.addEventListener("click", function(event) {
+                    let di = this.dataset.myValue;
+                    window.location = `./title/index.html?tv/id/${di}/1/1`;
+                });
+
+                trendingFilmsContainer.appendChild(imgContainer);
+            })
+            .catch(error => {
+                console.log("No Show Found")
             });
-
-            trendingFilmsContainer.appendChild(imgContainer);
-        })
-        .catch(error => {
-            console.log("No Show Found")
-        });
-    }
+        }
+}
 }
