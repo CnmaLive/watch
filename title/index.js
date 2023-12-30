@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
+// Save Season & Episode
 function saveToLocalStorage(id, s, e){
   var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   storedData[id] = {s, e};
@@ -78,12 +79,14 @@ function saveToLocalStorage(id, s, e){
   localStorage.setItem('seriesData', JSON.stringify(storedData));
 }
 
+// Get Saved Season & Episode
 function getFromLocalStorage(id){
   var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
   
   return storedData[id];
 }
 
+// Toggle Fullscreen
 function toggleFullscreen() {
   var iframe = document.getElementById('myIframe');
 
@@ -100,6 +103,7 @@ function toggleFullscreen() {
   }
 }
 
+// Episode List
 document.getElementById("eps").onclick = function(){
   let url = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/1`
   
@@ -132,14 +136,16 @@ document.getElementById("eps").onclick = function(){
 
 }
 
+// Play Next Episode
 document.getElementById("next").addEventListener("click", function(){
   let index = allEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));
   let nextSea = allEps[index+1][0];
   let nextEp = allEps[index+1][1];
   console.log(nextSea + " " + nextEp)
-  window.location = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
+  window.location.href = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
 });
 
+// Fill Array With Show Episodes
 function fillEps(){
   let url = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/1`
   
@@ -176,6 +182,7 @@ function fillEps(){
 });
 }
 
+// Make number format (00)
 function numberToString(num){
   let str;
   if(num < 10){
@@ -186,6 +193,7 @@ function numberToString(num){
   return str;
 }
 
+// Set Tab Title
 function setTitle(film){
   var url = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3`;
 
