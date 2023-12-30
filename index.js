@@ -201,3 +201,58 @@ searchBtn.onclick = function() {
     searchBar.style.visibility = "hidden";
     searchBar.style.width = "40px";
 }
+
+function addContinueWatching(){
+    var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
+  
+    if(storedData == null){
+        document.getElementById("continue-watching").style.display = "none";
+        document.getElementById("continue-container").style.display = "none";
+        return;
+    }
+
+
+    for(let i = 0; i < storedData.length; i++){
+        let id = storedData[i];
+
+        const url = `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let continueContainer = document.getElementById("continue-container");
+            let display = data.results[i].poster_path;
+            let name = data.results[i].original_name;
+            let source = `https://image.tmdb.org/t/p/original${display}`;
+            let id = data.results[i].id;
+
+            //Add Poster
+            let image = document.createElement("img");
+            image.src = source;
+            image.classList.add("poster-image");
+            
+            //Adding Title On Hover
+            let h3 = document.createElement("p");
+            let title = document.createTextNode(name);
+            h3.appendChild(title);
+            console.log(h3)
+            
+            //Div Storage
+            let imgContainer = document.createElement("div");
+            imgContainer.appendChild(image);
+            imgContainer.classList.add("poster-div");
+            imgContainer.appendChild(h3);
+            
+            //Saving ID to Image
+            imgContainer.dataset.myValue = id;
+            imgContainer.addEventListener("click", function(event) {
+                let di = this.dataset.myValue;
+                console.log(di)
+                window.location = `./title/index.html?tv/id/${di}/1/1`;
+            });
+        })
+        .catch(error => {
+            console.log("No Show Found")
+        });
+}
+}
