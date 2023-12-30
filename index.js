@@ -213,8 +213,8 @@ function addContinueWatching(){
     }
 
 
-    for(let i = 0; i < storedData.length; i++){
-        let id = storedData[i];
+    for (let key in data) {
+        let id = key;
 
         const url = `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`;
 
