@@ -54,10 +54,17 @@ body > iframe{
 
 .back-icon{
     height: 100%;
-    filter: invert();
+    filter: brightness(0) contrast(100%);
 }
 
 #next{
     display: flex;
     margin-left: auto;
+}
+
+@media (pointer:none), (pointer:coarse) {
+    body{
+        height: 90lvh;
+    
+    }
 }
