@@ -50,6 +50,7 @@ body > iframe{
 
 div > a{
     display: block;
+    height: 20px;
 }
 
 #eps-container::-webkit-scrollbar {

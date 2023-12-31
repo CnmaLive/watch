@@ -12,6 +12,17 @@ document.addEventListener("DOMContentLoaded", function(){
     input = decodeURIComponent(input.replace(/\+/g, " ")); // Use decodeURIComponent to handle URL encoding
     document.title = input;
 
+
+    fetch(`https://vidsrc.me/embed/tv?tmdb=3432342&season=1&episode=2`)
+    .then(response => {
+        if (!response.ok) {
+          // Check if the response status is not in the range 200-299
+          console.error(`Error: ${response.status} - ${response.statusText}`);
+        } else {
+          console.log('Link is valid.');
+        }
+      })
+
     const movieSearchResutls = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`;
     fetch(movieSearchResutls)
     .then(response => response.json())
@@ -32,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function(){
             let h3 = document.createElement("p");
             let title = document.createTextNode(name);
             h3.appendChild(title);
-            console.log(h3)
             
             //Div Storage
             let imgContainer = document.createElement("div");
@@ -44,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function(){
             imgContainer.dataset.myValue = id;
             imgContainer.addEventListener("click", function(event) {
                 let di = this.dataset.myValue;
-                console.log(di)
                 window.location = `../title/index.html?movie/id/${di}`;
             });
     
@@ -64,9 +73,6 @@ fetch(tvSearchResutls)
         let source = `https://image.tmdb.org/t/p/original${display}`;
         let id = data.results[i].id;
 
-        console.log(tvSearchResutls)
-
-
         //Add Poster
         let image = document.createElement("img");
         image.src = source;
@@ -76,7 +82,6 @@ fetch(tvSearchResutls)
         let h3 = document.createElement("p");
         let title = document.createTextNode(name);
         h3.appendChild(title);
-        console.log(h3)
         
         //Div Storage
         let imgContainer = document.createElement("div");
@@ -88,7 +93,6 @@ fetch(tvSearchResutls)
         imgContainer.dataset.myValue = id;
         imgContainer.addEventListener("click", function(event) {
             let di = this.dataset.myValue;
-            console.log(di)
             window.location = `../title/index.html?tv/id/${di}`;
         });
 
@@ -177,7 +181,6 @@ for(let i = 0; i < rightButton.length; i++){
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
         slider.style.setProperty('--slider-index', sliderIndex+1);
-        console.log(sliderIndex)
     });
 }
 
