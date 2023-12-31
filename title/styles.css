@@ -2,7 +2,7 @@ body{
     margin: 0;
     background-color: black;
     overflow: hidden;
-    height: 99lvh;
+    height: 99.5lvh;
 
 }
 
@@ -46,6 +46,10 @@ body > iframe{
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+div > a{
+    display: inline-block;
 }
 
 #eps-container::-webkit-scrollbar {
