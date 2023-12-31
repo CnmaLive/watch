@@ -64,7 +64,9 @@ body > iframe{
 
 @media (pointer:none), (pointer:coarse) {
     body{
-        height: 90lvh;
-    
+        height: 30%;
+        
     }
+
+    
 }
