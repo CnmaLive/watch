@@ -9,6 +9,7 @@ var id;
 var allEps = [];
 
 document.addEventListener("DOMContentLoaded", function(){
+
   //TV or Movie
   var index = a.charAt(a.indexOf("?")+1);
 
@@ -27,15 +28,9 @@ document.addEventListener("DOMContentLoaded", function(){
   } else {
   //Get Season and Episode
 
-    console.log(getFromLocalStorage(id));
-
   //Check if Episode is Defineds
-  console.log(indexOfId+2)
-  console.log(urlSplit.length)
   if(indexOfId+2 == urlSplit.length){
     let saved = getFromLocalStorage(id);
-      console.log(saved)
-      console.log("asdf") 
     if(saved == null){
       season = 1;
       episode = 1;
@@ -46,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     window.location = `../title/index.html?tv/id/${id}/${season}/${episode}`;
+    return;
 
   }
 
@@ -67,15 +63,46 @@ document.addEventListener("DOMContentLoaded", function(){
 
   container.appendChild(iframe);
 
-  saveToLocalStorage();
-
 });
 
 // Save Season & Episode
 function saveToLocalStorage(id, s, e){
   var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
-  storedData[id] = {s, e};
+  
+  console.log(storedData)
 
+    let savedLoc = Object.keys(storedData).length;
+  for(let key in storedData){
+   if(!(/^\d+$/.test(key))){
+      delete storedData[key];
+    }
+    
+    if(key === id){
+      savedLoc = storedData[key].loc;
+      delete storedData[key];
+    }
+  }
+
+    console.log(savedLoc)
+
+
+  for(let key in storedData){
+    // if (savedLoc == 0){
+    //   break;
+    // }
+    if(storedData[key].loc < savedLoc){
+      storedData[key].loc += 1;
+    }
+  }
+
+  let loc = 0;
+  storedData[id] = {s, e, loc};
+
+  console.log(storedData)
+
+
+
+  
   localStorage.setItem('seriesData', JSON.stringify(storedData));
 }
 
@@ -141,12 +168,12 @@ document.getElementById("back").addEventListener("click", function(){
     window.location = "../index.html";
 });
 
+
 // Play Next Episode
 document.getElementById("next").addEventListener("click", function(){
   let index = allEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));
   let nextSea = allEps[index+1][0];
   let nextEp = allEps[index+1][1];
-  console.log(nextSea + " " + nextEp)
   window.location.href = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
 });
 

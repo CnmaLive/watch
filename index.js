@@ -4,6 +4,7 @@ var searchBar = document.getElementById("search-bar");
 const apiKey = '89d3d50b04bf827bde106ef72f4856c3';  
 
 document.addEventListener("DOMContentLoaded", function(){
+
     // Set Search Bar hidden
     document.getElementById("search-bar").style.visibility = "hidden";
     
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
         let backgroundContaner = document.getElementById("background-container").style;
         let display = data.backdrop_path;
         let name = data.name;
+        let id = data.id;
         let overview = data.overview.split('. ', 1)[0] + ".";
         let source = `https://image.tmdb.org/t/p/original${display}`;
         
@@ -29,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let description = document.createTextNode(overview);
         document.getElementById("featured-description").appendChild(description);
+
+        document.getElementById("now-watch-btn").onclick = function(){
+            window.location = `./title/index.html?movie/id/${id}`;
+        }
     })
     .catch(error => {
         console.log("No Show Found")
@@ -57,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(){
             image.classList.add("poster-image");
             
             //Adding Title On Hover
-            let h3 = document.createElement("p");
+            let h3 = document.createElement("h4");
             let title = document.createTextNode(name);
             h3.appendChild(title);
             
@@ -99,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function(){
             image.classList.add("poster-image");
             
             //Adding Title On Hover
-            let h3 = document.createElement("p");
+            let h3 = document.createElement("h4");
             let title = document.createTextNode(name);
             h3.appendChild(title);
             
@@ -204,14 +210,26 @@ searchBtn.onclick = function() {
 function addContinueWatching(){
     var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
 
+    console.log(storedData)
+    
+
     if(Object.keys(storedData).length === 0){
         document.getElementById("continue-watching").style.display = "none";
         document.getElementById("continue-container").style.display = "none";
         return;
     }
 
-    for (let key in storedData) {
-        const url = `https://api.themoviedb.org/3/tv/${key}?api_key=${apiKey}`;
+    var dataArray = Object.entries(storedData);
+    // Sort the array based on loc property
+    dataArray.sort((a, b) => a[1].loc - b[1].loc);
+    // Convert array back to object
+    var sortedData = Object.fromEntries(dataArray);
+    console.log(dataArray);
+
+    for (let key in dataArray) {
+        console.log(dataArray[key][0])
+        const url = `https://api.themoviedb.org/3/tv/${dataArray[key][0]}?api_key=${apiKey}`;
+
 
         if(/^\d+$/.test(key)){
             fetch(url)
@@ -223,22 +241,28 @@ function addContinueWatching(){
                 let source = `https://image.tmdb.org/t/p/original${display}`;
                 let id = data.id;
 
+                let season = dataArray[key][1].s;
+                let episode = dataArray[key][1].e;
+
                 //Add Poster
                 let image = document.createElement("img");
                 image.src = source;
-                image.classList.add("poster-image");
                 
+                let p = document.createElement("p");
+                let progress = document.createTextNode("S:" + season + " E:" + episode);
+                p.appendChild(progress);
+
                 //Adding Title On Hover
-                let h3 = document.createElement("p");
+                let h3 = document.createElement("h4");
                 let title = document.createTextNode(name);
+                h3.appendChild(p);
                 h3.appendChild(title);
-                
+
                 //Div Storage
                 let imgContainer = document.createElement("div");
                 imgContainer.appendChild(image);
-                imgContainer.classList.add("poster-div");
                 imgContainer.appendChild(h3);
-                
+
                 //Saving ID to Image
                 imgContainer.dataset.myValue = id;
                 imgContainer.addEventListener("click", function(event) {
@@ -251,6 +275,8 @@ function addContinueWatching(){
             .catch(error => {
                 console.log("No Show Found")
             });
+
         }
+        
 }
 }
