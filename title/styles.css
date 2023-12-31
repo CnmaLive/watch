@@ -67,7 +67,7 @@ body > iframe{
     html {
         transform: rotate(90deg);
         transform-origin: left bottom;
-        width: 100vh;
+        width: 100lvh;
         height: 100vw;
         overflow-x: hidden;
         position: absolute;
