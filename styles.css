@@ -400,6 +400,14 @@ body > h2 {
 }
 
  @media only screen and (max-width: 720px) {
+
+    .slider > div > img{
+        height: 100%; 
+        width: 100%; 
+        display:block;
+        border-radius: .5rem;
+    }
+
     .slider > div{
         max-width: calc(100% / 3 - 2 * .5rem);
         min-width: calc(100% / 3 - 2 * .5rem);
