@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   }
 
-  source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
+  source = `https://www.youtube.com/embed/tgbNymZ7vqY`;
   //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   //Set Tab Title
