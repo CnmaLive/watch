@@ -136,6 +136,11 @@ document.getElementById("eps").onclick = function(){
 
 }
 
+// Button Back Home
+document.getElementById("back").addEventListener("click", function(){
+    window.location = "../index.html";
+});
+
 // Play Next Episode
 document.getElementById("next").addEventListener("click", function(){
   let index = allEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));

@@ -49,7 +49,7 @@ body > iframe{
 }
 
 div > a{
-    display: inline-block;
+    display: block;
 }
 
 #eps-container::-webkit-scrollbar {
