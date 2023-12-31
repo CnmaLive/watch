@@ -62,8 +62,9 @@ body > iframe{
     margin-left: auto;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-    html {
+
+@media (pointer:none), (pointer:coarse), (orientation: portrait) {
+ html {
       transform: rotate(-90deg);
       transform-origin: left top;
       width: 100vh;
@@ -73,18 +74,4 @@ body > iframe{
       top: 100%;
       left: 0;
     }
-  }
-
-
-@media (pointer:none), (pointer:coarse) {
- body {
-        transform: rotate(90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
-      }
 }
