@@ -71,8 +71,9 @@ body > iframe{
         height: 100vw;
         overflow-x: hidden;
         position: absolute;
-        top: -52%;
+        top: -56.2%;
         left: 0;
+        background-color: red;
     }
     body{
         margin: 0;
