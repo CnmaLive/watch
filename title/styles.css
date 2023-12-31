@@ -74,4 +74,19 @@ body > iframe{
       top: 100%;
       left: 0;
     }
+
+    body{
+        margin: 0;
+        background-color: black;
+        overflow: hidden;
+        height: 100%;
+    
+    }
+    
+    body > iframe{
+        height: 100%;
+        width: 100%;
+        border: none;
+    }
+    
 }
