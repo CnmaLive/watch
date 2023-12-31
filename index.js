@@ -227,7 +227,7 @@ function addContinueWatching(){
     console.log(dataArray);
 
     for (let key in dataArray) {
-        console.log(dataArray[key][0])
+        console.log(dataArray === undefined)
         const url = `https://api.themoviedb.org/3/tv/${dataArray[key][0]}?api_key=${apiKey}`;
 
 

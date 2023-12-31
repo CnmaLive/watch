@@ -76,7 +76,7 @@ function saveToLocalStorage(id, s, e){
    if(!(/^\d+$/.test(key))){
       delete storedData[key];
     }
-    
+
     if(key === id){
       savedLoc = storedData[key].loc;
       delete storedData[key];
