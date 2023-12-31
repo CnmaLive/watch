@@ -1,29 +1,37 @@
 body{
     margin: 0;
     background-color: black;
-    overflow: visible;
+    overflow: hidden;
+    height: 99lvh;
+
 }
 
 body > iframe{
-    height: 100lvh;
+    height: 100%;
     width: 100%;
     border: none;
 }
 
+/* Div that Contains Back, Next, Eps buttons */
 .button-container{
     z-index: 10;
     background-color: transparent;
     position: absolute;
-    top: 5%;
+    top: 1%;
     width: 100%;
     height: 5%;
     display: flex;
-    justify-content: flex-end;
 }
 
 .button-container > button{
-    width: 10%;
-    height: 100%;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 13px;
+    margin-right: 45px;
+    cursor: pointer;
+    border: none;
 }
 
 #eps-container{
@@ -44,14 +52,12 @@ body > iframe{
     display: none;
 }
 
-p{
-    color: white;
+.back-icon{
+    height: 100%;
+    filter: invert();
 }
 
-div > a{
-    text-decoration: none;
-    color: white;
-    display: block;
-    height: 20px;
+#next{
+    display: flex;
+    margin-left: auto;
 }
-
