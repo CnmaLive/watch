@@ -155,32 +155,43 @@ searchBtn.onclick = function() {
     searchBar.style.width = "40px";
 }
 
-var leftButtons = document.getElementsByClassName("scroll-left");
+//Add Scrolling Button Left
+let leftButtons = document.getElementsByClassName("scroll-left");
 
 for(let i = 0; i < leftButtons.length; i++){
     leftButtons[i].addEventListener("click", function(){
         let container = leftButtons[i].parentNode;
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
-        slider.style.setProperty('--slider-index', sliderIndex-1);
+        let div = slider.getElementsByTagName('div');
+        let divLen = getComputedStyle(document.querySelector('.slider > div')).getPropertyValue('--nr-of-titles');
+        let entriesNr = div.length;
+        let maxSliderIndex = entriesNr / divLen - 1;
+        if(sliderIndex == 0){
+            slider.style.setProperty('--slider-index', maxSliderIndex);
+            return;
+        }
+        slider.style.setProperty('--slider-index', sliderIndex - 1);
     });
 }
 
-document.getElementById("search-bar").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      document.getElementById("search-btn").click();
-    }
-  });
-
 //Add Scrolling Button Right
-var rightButton = document.getElementsByClassName("scroll-right");
+let rightButton = document.getElementsByClassName("scroll-right");
 
 for(let i = 0; i < rightButton.length; i++){
     rightButton[i].addEventListener("click", function(){
         let container = rightButton[i].parentNode;
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
-        slider.style.setProperty('--slider-index', sliderIndex+1);
+        let div = slider.getElementsByTagName('div');
+        let divLen = getComputedStyle(document.querySelector('.slider > div')).getPropertyValue('--nr-of-titles');
+        let entriesNr = div.length;
+        let maxSliderIndex = entriesNr / divLen - 1;
+        if(sliderIndex >= maxSliderIndex){
+            slider.style.setProperty('--slider-index', 0);
+            return;
+        }
+        slider.style.setProperty('--slider-index', sliderIndex + 1);
     });
 }
 

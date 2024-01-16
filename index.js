@@ -1,6 +1,6 @@
-var searchBtn = document.getElementById("search-btn");
-var notificationBtn = document.getElementById("notification-btn");
-var searchBar = document.getElementById("search-bar");
+let searchBtn = document.getElementById("search-btn");
+let notificationBtn = document.getElementById("notification-btn");
+let searchBar = document.getElementById("search-bar");
 const apiKey = '89d3d50b04bf827bde106ef72f4856c3';  
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -130,26 +130,42 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 //Add Scrolling Button Left
-var leftButtons = document.getElementsByClassName("scroll-left");
+let leftButtons = document.getElementsByClassName("scroll-left");
 
 for(let i = 0; i < leftButtons.length; i++){
     leftButtons[i].addEventListener("click", function(){
         let container = leftButtons[i].parentNode;
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
-        slider.style.setProperty('--slider-index', sliderIndex-1);
+        let div = slider.getElementsByTagName('div');
+        let divLen = getComputedStyle(document.querySelector('.slider > div')).getPropertyValue('--nr-of-titles');
+        let entriesNr = div.length;
+        let maxSliderIndex = entriesNr / divLen - 1;
+        if(sliderIndex == 0){
+            slider.style.setProperty('--slider-index', maxSliderIndex);
+            return;
+        }
+        slider.style.setProperty('--slider-index', sliderIndex - 1);
     });
 }
 
 //Add Scrolling Button Right
-var rightButton = document.getElementsByClassName("scroll-right");
+let rightButton = document.getElementsByClassName("scroll-right");
 
 for(let i = 0; i < rightButton.length; i++){
     rightButton[i].addEventListener("click", function(){
         let container = rightButton[i].parentNode;
         let slider = container.querySelector(".slider");
         const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index'));
-        slider.style.setProperty('--slider-index', sliderIndex+1);
+        let div = slider.getElementsByTagName('div');
+        let divLen = getComputedStyle(document.querySelector('.slider > div')).getPropertyValue('--nr-of-titles');
+        let entriesNr = div.length;
+        let maxSliderIndex = entriesNr / divLen - 1;
+        if(sliderIndex >= maxSliderIndex){
+            slider.style.setProperty('--slider-index', 0);
+            return;
+        }
+        slider.style.setProperty('--slider-index', sliderIndex + 1);
     });
 }
 
@@ -208,7 +224,7 @@ searchBtn.onclick = function() {
 }
 
 function addContinueWatching(){
-    var storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
+    let storedData = JSON.parse(localStorage.getItem('seriesData')) || {};
 
     console.log(storedData)
     

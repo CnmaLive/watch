@@ -236,8 +236,9 @@ body > h2 {
 }
 
 .slider > div{
-    max-width: calc(100% / 6 - 2 * .5rem);
-    min-width: calc(100% / 6 - 2 * .5rem);
+    --nr-of-titles: 6;
+    max-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
+    min-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
     margin: .5rem;
     border-radius: 0.96rem;
     transition: .3s;
@@ -375,8 +376,9 @@ body > h2 {
 
 @media only screen and (max-width: 1200px) {
     .slider > div{
-        max-width: calc(100% / 5 - 2 * .5rem);
-        min-width: calc(100% / 5 - 2 * .5rem);
+        --nr-of-titles: 5;
+        max-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
+        min-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
     }
 
 }
@@ -392,8 +394,9 @@ body > h2 {
         margin-right: 20px;
     }
     .slider > div{
-        max-width: calc(100% / 4 - 2 * .5rem);
-        min-width: calc(100% / 4 - 2 * .5rem);
+        --nr-of-titles: 4;
+        max-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
+        min-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
     }
 
 
@@ -409,8 +412,9 @@ body > h2 {
     }
 
     .slider > div{
-        max-width: calc(100% / 3 - 2 * .5rem);
-        min-width: calc(100% / 3 - 2 * .5rem);
+        --nr-of-titles: 3;
+        max-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
+        min-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
     }
 
     div > p{
@@ -424,8 +428,9 @@ body > h2 {
 
 @media only screen and (max-width: 620px) {
     .slider > div{
-        max-width: calc(100% / 2 - 2 * .5rem);
-        min-width: calc(100% / 2 - 2 * .5rem);
+        --nr-of-titles: 2;
+        max-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
+        min-width: calc(100% / var(--nr-of-titles) - 2 * .5rem);
     }
     .search-bar-size{
         --sarch-bar-expand: 290;
