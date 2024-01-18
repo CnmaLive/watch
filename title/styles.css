@@ -38,14 +38,55 @@ body > iframe{
     position: absolute;
     display: none;  
     top: 10%;
+    width: 100%;
     height: 50%;
     overflow-y: scroll;
-    background-color: rgba(100, 100, 100, 0.9);
-    padding-left: 10px;
-    padding-right: 10px;
+    background-color: rgba(230, 230, 230, 0.3);
+    backdrop-filter: blur(.5rem);
+}
 
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+#season-buttons{
+    width: 100%;
+    height: 2.5rem;
+    white-space: nowrap;
+    overflow: auto;
+    margin: 0.5rem .2rem;
+}
+
+::-webkit-scrollbar {
+    height: .4rem;
+    cursor: pointer;
+    filter: blur(.8);
+    color: red;
+}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: .5rem;
+}
+
+#season-buttons > button{
+    display: inline-block;
+    height: 2rem;
+    width: 15%;
+    font-size: 1.3rem;
+    margin-inline: 0.2rem;
+    background-color: transparent;
+    border: 1px solid;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border-radius: .2rem;
+}
+
+#episodesScroll{
+    width: 100%;
+    height: 2.5rem;
+    white-space: nowrap;
+    overflow: auto;
+    margin: 0.5rem .2rem;
+}
+
+#season-buttons > button:hover{
+    background-color: rgba(135, 135, 135, 1);
 }
 
 div > a{
@@ -73,7 +114,7 @@ div > a{
         transform: rotate(90deg);
         transform-origin: left bottom;
         width: 100lvh;
-        height: 100vw;
+        height: 90vw;
         overflow-x: hidden;
         position: absolute;
         top: -56.7%;
@@ -86,4 +127,9 @@ div > a{
         width: 100%;
         height: 100%;
     }
+    .season-buttons > button{
+        width: 20%;
+    }
+
+
 }

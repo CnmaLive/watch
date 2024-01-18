@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("search-bar").style.visibility = "hidden";
     
     // Set Feature Title
-    let input = '108978';
+    let input = '10283';
 
         //const url = `https://api.themoviedb.org/3/movie/${input}?api_key=${apiKey}`;
     const url = `https://api.themoviedb.org/3/tv/${input}?api_key=${apiKey}`;
@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function(){
         let backgroundContaner = document.getElementById("background-container").style;
         let display = data.backdrop_path;
         let name = data.name;
+        //let name = data.title;
         let id = data.id;
-        let overview = data.overview.split('. ', 1)[0] + ".";
+        let overview = data.overview.split('. ', 1)[0] + "." //+ data.overview.split('. '[1] + ".");
         let source = `https://image.tmdb.org/t/p/original${display}`;
         
         backgroundContaner.backgroundImage = `linear-gradient(to left, rgba(0,20,34,0) 30%, rgba(0,20,34,0.7)), linear-gradient(to bottom, rgba(0,20,34,0) 50%, rgba(0,20,34,1)), linear-gradient(to top, rgba(0,20,34,0) 70%, rgba(0,20,34,0.5)),url('${source}')`;
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("featured-description").appendChild(description);
 
         document.getElementById("now-watch-btn").onclick = function(){
-            window.location = `./title/index.html?movie/id/${id}`;
+            window.location = `./title/index.html?tv/id/${id}`;
         }
     })
     .catch(error => {
