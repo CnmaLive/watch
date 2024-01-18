@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   if(index == "m"){
     //var source = `https://vidsrc.me/embed/movie?tmdb=${id}`;
-    //var source = `https://vidsrc.to/embed/movie/${id}`
+    var source = `https://vidsrc.to/embed/movie/${id}`
 
     setTitle(true);
   } else {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   //source = `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
-  //source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+  source = `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
 
   //Set Tab Title
   setTitle(false);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   //Add iFrame to Body
   let iframe = document.getElementById("iFrame");
-  //iframe.src = source;
+  iframe.src = source;
 
   container.appendChild(iframe);
 
@@ -155,7 +155,7 @@ document.getElementById("eps").onclick = function(){
           let sea = numberToString(allEps[j][0]);
           let ep = numberToString(allEps[j][1]);
           let title = allEps[i][j];
-          let display = allEps[i][3];
+          let display = allEps[i][j];
           let source = `https://image.tmdb.org/t/p/original${display}`;
           let img = document.createElement("img");
           img.src = source;
