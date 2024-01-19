@@ -123,12 +123,6 @@ function toggleFullscreen() {
 
 // Episode List
 document.getElementById("eps").onclick = function(){
-  let url = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/1`
-  
-  console.log(url);
-  fetch(url)
-  .then(response => response.json())
-  .then(data => {
     var epList = document.getElementById("eps-container");
     if(epList.style.display != "block"){
       epList.style.display = "block";
@@ -137,44 +131,43 @@ document.getElementById("eps").onclick = function(){
       epList.style.display = "none";
     }
 
-    console.log(allEps)
     let btnDiv = document.getElementById("season-buttons");
+    let epsDiv = document.getElementById("episodesScroll");
     for(let i = 0; i < allEps.length; i++){
-      epList.innerHTML = "";
+      let currentEp = 0;
       let btn = document.createElement("button");
       let ind = i + 1;
       btn.textContent = `Season ${ind}`;
       btnDiv.appendChild(btn);
-      btnDiv.classList.add("season-buttons");
-      epList.appendChild(btnDiv);
+      
       btn.addEventListener("click", function(){
-      let div = document.getElementById("episodesScroll");
-        for(let j = 0; j < allEps[i].length; j++){
-          let a = document.createElement("a");
-          a.href = `../title/index.html?tv/id/${id}/${allEps[i][0]}/${allEps[i][1]}`;
-  
-          let sea = numberToString(allEps[j][0]);
-          let ep = numberToString(allEps[j][1]);
-          let title = allEps[i][j];
-          let display = allEps[i][j];
+        epsDiv.innerHTML = "";
+        for(let j = 0; j < allEps[ind].length; j++){
+          let div = document.createElement("div");
+          div.classList.add("epsDiv")
+          
+          let sea = ind;
+          let ep = j + 1;
+          let title = allEps[ind][j][1];
+          let display = allEps[ind][j][2];
+          let epIndex = allEps[ind][j][3];
           let source = `https://image.tmdb.org/t/p/original${display}`;
           let img = document.createElement("img");
           img.src = source;
-  
+          
+          let a = document.createElement("a");
+          console.log(nextEps[epIndex][0] + " " + nextEps[epIndex][1] + " WHe")
+          a.href = `../title/index.html?tv/id/${id}/${nextEps[epIndex][0]}/${nextEps[epIndex][1]}`;
+          currentEp++;
+
           let textNode = document.createTextNode("S:"+sea+" E:"+ep + " " + title);
-          console.log(textNode)
           a.appendChild(textNode);
           div.appendChild(img);
           div.appendChild(a);
+          epsDiv.appendChild(div);
         }
-        let index = allEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));
-        epList.scrollTop = 20 * index;
       });
-      
     }
-  });
-
-
 }
 
 // Button Back Home
@@ -199,21 +192,34 @@ function fillEps(){
   .then(response => response.json())
   .then(data => {
     var len = data.seasons.length;
-    let minus = 0;
+
     if(data.seasons[0].name == "Specials"){
-      minus = 1;
-    }
-    for(let i = 0; i < data.seasons.length - minus; i++){
-      let epNr = data.seasons.length;
-      for(let j = 0; j < epNr; j++){
-        let zSeason = i + 1;
-        let zEpisode = j + 1;
-        nextEps.push([zSeason, zEpisode]);
+      for(let i = 0; i < data.seasons.length - 1; i++){
+        let epNr = data.seasons[i].episode_count;
+        for(let j = 0; j < epNr; j++){
+          if(data.seasons[i].name != "Specials"){
+            let zSeason = i;
+            let zEpisode = j + 1;
+            nextEps.push([zSeason, zEpisode]);
+          }
+        }
+      }
+    } else{
+      for(let i = 0; i < data.seasons.length; i++){
+        let epNr = data.seasons[i].episode_count;
+        for(let j = 0; j < epNr; j++){
+          let zSeason = i + 1;
+          let zEpisode = j + 1;
+          nextEps.push([zSeason, zEpisode]);
+        }
       }
     }
 
+    console.log(nextEps);
+
     if(data.seasons[0].name == "Specials"){
-      for(let i = 0; i < len; i++){
+      let ind = 0;
+      for(let i = 0; i < len - 1; i++){
         if(data.seasons[i].name != "Specials"){
           let eps = data.seasons[i].episode_count;
           let InnerUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/${i}`;
@@ -227,7 +233,8 @@ function fillEps(){
               let epName = data[`season/${i}`].episodes[j].name;
               let still = data[`season/${i}`].episodes[j].still_path;
               
-              ary.push([parseInt(zEpisode), epName, still]);
+              ary.push([parseInt(zEpisode), epName, still, ind]);
+              ind++;
             }
           });
           allEps.push(ary);

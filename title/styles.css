@@ -39,7 +39,7 @@ body > iframe{
     display: none;  
     top: 10%;
     width: 100%;
-    height: 50%;
+    height: 35%;
     overflow-y: scroll;
     background-color: rgba(230, 230, 230, 0.6);
     backdrop-filter: blur(.5rem);
@@ -47,7 +47,7 @@ body > iframe{
 
 #season-buttons{
     width: 100%;
-    height: 2.5rem;
+    height: 3rem;
     white-space: nowrap;
     overflow: auto;
     margin: 0.5rem .2rem;
@@ -79,10 +79,26 @@ body > iframe{
 
 #episodesScroll{
     width: 100%;
-    height: 2.5rem;
     white-space: nowrap;
     overflow: auto;
     margin: 0.5rem .2rem;
+
+    width: 100%;
+    height: 70%;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow: auto;
+    margin: 0.5rem .2rem;
+}
+.epsDiv > img{
+    width: 100%;
+    display: inline-block;
+}
+
+.epsDiv{
+    height: 100%;
+    width: 25%;
+    display: inline-block;
 }
 
 #season-buttons > button:hover{
@@ -113,7 +129,7 @@ div > a{
     html {
         transform: rotate(90deg);
         transform-origin: left bottom;
-        width: 100lvh;
+        width: -webkit-fill-available;
         height: 100vw;
         overflow-x: hidden;
         position: absolute;
@@ -124,7 +140,7 @@ div > a{
         margin: 0;
         background-color: black;
         overflow: hidden;
-        width: 90%;
+        width: 100%;
         height: 100%;
     }
     .season-buttons > button{
