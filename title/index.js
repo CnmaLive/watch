@@ -7,6 +7,7 @@ var episode = urlSplit[urlSplit.length-1];
 var id;
 
 var allEps = [[]];
+var nextEps = [];
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -198,6 +199,18 @@ function fillEps(){
   .then(response => response.json())
   .then(data => {
     var len = data.seasons.length;
+    let minus = 0;
+    if(data.seasons[0].name == "Specials"){
+      minus = 1;
+    }
+    for(let i = 0; i < data.seasons.length - minus; i++){
+      let epNr = data.seasons.length;
+      for(let j = 0; j < epNr; j++){
+        let zSeason = i;
+        let zEpisode = j + 1;
+        nextEps.push([zSeason, zEpisode]);
+      }
+    }
 
     if(data.seasons[0].name == "Specials"){
       for(let i = 0; i < len; i++){
