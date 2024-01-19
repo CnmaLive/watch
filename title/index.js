@@ -206,7 +206,7 @@ function fillEps(){
     for(let i = 0; i < data.seasons.length - minus; i++){
       let epNr = data.seasons.length;
       for(let j = 0; j < epNr; j++){
-        let zSeason = i;
+        let zSeason = i + 1;
         let zEpisode = j + 1;
         nextEps.push([zSeason, zEpisode]);
       }
