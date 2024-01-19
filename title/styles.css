@@ -129,8 +129,8 @@ div > a{
     html {
         transform: rotate(90deg);
         transform-origin: left bottom;
-        width: -webkit-fill-available;
-        height: 100vw;
+        width: 100lvh;
+        height: -webkit-fill-available;
         overflow-x: hidden;
         position: absolute;
         top: -56.7%;
