@@ -185,9 +185,9 @@ document.getElementById("back").addEventListener("click", function(){
 
 // Play Next Episode
 document.getElementById("next").addEventListener("click", function(){
-  let index = allEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));
-  let nextSea = allEps[index+1][0];
-  let nextEp = allEps[index+1][1];
+  let index = nextEps.findIndex(arr => arr[0] === parseInt(season) && arr[1] === parseInt(episode));
+  let nextSea = nextEps[index+1][0];
+  let nextEp = nextEps[index+1][1];
   window.location.href = `../title/index.html?tv/id/${id}/${nextSea}/${nextEp}`;
 });
 
