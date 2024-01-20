@@ -151,7 +151,7 @@ document.getElementById("eps").onclick = function(){
         for(let j = 0; j < allEps[ind].length; j++){
           let div = document.createElement("div");
           div.classList.add("epsDiv")
-          
+
           let sea = ind;
           let ep = j + 1;
           let title = allEps[ind][j][1];
@@ -166,7 +166,11 @@ document.getElementById("eps").onclick = function(){
           a.href = `../title/index.html?tv/id/${id}/${nextEps[epIndex][0]}/${nextEps[epIndex][1]}`;
           currentEp++;
 
-          let textNode = document.createTextNode("S:"+sea+" E:"+ep + " " + title);
+          div.addEventListener("click", function(){
+           window.location.href = `../title/index.html?tv/id/${id}/${nextEps[epIndex][0]}/${nextEps[epIndex][1]}`;
+          });
+
+          let textNode = document.createTextNode(ep + ". " + title);
           a.appendChild(textNode);
           div.appendChild(img);
           div.appendChild(a);

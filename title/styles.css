@@ -39,7 +39,7 @@ body > iframe{
     display: none;  
     top: 10%;
     width: 100%;
-    height: 35%;
+    min-height: 15rem;
     overflow-y: scroll;
     background-color: rgba(230, 230, 230, 0.6);
     backdrop-filter: blur(.5rem);
@@ -67,6 +67,7 @@ body > iframe{
 #season-buttons > button{
     display: inline-block;
     height: 2rem;
+    min-width: 6.5rem;
     width: 15%;
     font-size: 1.3rem;
     margin-inline: 0.2rem;
@@ -92,12 +93,17 @@ body > iframe{
 }
 .epsDiv > img{
     width: 100%;
+    border-radius: 3rem;
+    padding-inline: 1rem;
     display: inline-block;
 }
 
 .epsDiv{
-    height: 100%;
-    width: 25%;
+    cursor: pointer;
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    width: 25%;    
+    min-width: 20rem;
     display: inline-block;
 }
 
