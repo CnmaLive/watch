@@ -254,26 +254,15 @@ function fillEps(){
       return;
     }
 
-    
+
 
     for(let i = 0; i < len; i++){
       var len = data.seasons.length;
 
-      if(data.seasons[0].name == "Specials"){
-        for(let i = 0; i < data.seasons.length - 1; i++){
-          let epNr = data.seasons[i].episode_count;
-          for(let j = 0; j < epNr; j++){
-            if(data.seasons[i].name != "Specials"){
-              let zSeason = i;
-              let zEpisode = j + 1;
-              nextEps.push([zSeason, zEpisode]);
-            }
-          }
-        }
-      } else{
-        for(let i = 0; i < data.seasons.length; i++){
-          let epNr = data.seasons[i].episode_count;
-          for(let j = 0; j < epNr; j++){
+      for(let i = 0; i < data.seasons.length - 1; i++){
+        let epNr = data.seasons[i].episode_count;
+        for(let j = 0; j < epNr; j++){
+          if(data.seasons[i].name != "Specials"){
             let zSeason = i + 1;
             let zEpisode = j + 1;
             nextEps.push([zSeason, zEpisode]);
@@ -281,7 +270,6 @@ function fillEps(){
         }
       }
   
-      if(data.seasons[0].name == "Specials"){
         let ind = 0;
         for(let i = 0; i < len - 1; i++){
           if(data.seasons[i].name != "Specials"){
@@ -292,10 +280,10 @@ function fillEps(){
             .then(response => response.json())
             .then(data => {
               for(let j = 0; j < eps; j++){
-                let zSeason = i;
+                let zSeason = i + 1;
                 let zEpisode = j + 1;
-                let epName = data[`season/${i}`].episodes[j].name;
-                let still = data[`season/${i}`].episodes[j].still_path;
+                let epName = data[`season/${zSeason}`].episodes[j].name;
+                let still = data[`season/${zSeason}`].episodes[j].still_path;
                 
                 ary.push([parseInt(zEpisode), epName, still, ind]);
                 ind++;
@@ -303,8 +291,6 @@ function fillEps(){
             });
             allEps.push(ary);
           }
-  
-        }
       }
     }
   });
