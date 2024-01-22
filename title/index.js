@@ -254,24 +254,60 @@ function fillEps(){
       return;
     }
 
+    
+
     for(let i = 0; i < len; i++){
-      if(data.seasons[i].name != "Specials"){
-        let eps = data.seasons[i].episode_count;
-        let InnerUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/${i}`;
-        fetch(InnerUrl)
-        .then(response => response.json())
-        .then(data => {
-          for(let j = 0; j < eps; j++){
-            let zSeason = i;
-            let zEpisode = j + 1;
-            let epName = data[`season/${i}`].episodes[j].name;
-            
-            allEps.push([parseInt(zSeason), parseInt(zEpisode), epName]);
+      var len = data.seasons.length;
+
+      if(data.seasons[0].name == "Specials"){
+        for(let i = 0; i < data.seasons.length - 1; i++){
+          let epNr = data.seasons[i].episode_count;
+          for(let j = 0; j < epNr; j++){
+            if(data.seasons[i].name != "Specials"){
+              let zSeason = i;
+              let zEpisode = j + 1;
+              nextEps.push([zSeason, zEpisode]);
+            }
           }
-        });
+        }
+      } else{
+        for(let i = 0; i < data.seasons.length; i++){
+          let epNr = data.seasons[i].episode_count;
+          for(let j = 0; j < epNr; j++){
+            let zSeason = i + 1;
+            let zEpisode = j + 1;
+            nextEps.push([zSeason, zEpisode]);
+          }
+        }
+      }
+  
+      if(data.seasons[0].name == "Specials"){
+        let ind = 0;
+        for(let i = 0; i < len - 1; i++){
+          if(data.seasons[i].name != "Specials"){
+            let eps = data.seasons[i].episode_count;
+            let InnerUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=89d3d50b04bf827bde106ef72f4856c3&append_to_response=season/${i}`;
+            let ary = [];
+            fetch(InnerUrl)
+            .then(response => response.json())
+            .then(data => {
+              for(let j = 0; j < eps; j++){
+                let zSeason = i;
+                let zEpisode = j + 1;
+                let epName = data[`season/${i}`].episodes[j].name;
+                let still = data[`season/${i}`].episodes[j].still_path;
+                
+                ary.push([parseInt(zEpisode), epName, still, ind]);
+                ind++;
+              }
+            });
+            allEps.push(ary);
+          }
+  
+        }
       }
     }
-});
+  });
 }
 
 // Make number format (00)
